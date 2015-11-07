@@ -1,0 +1,5 @@
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGModels\bin\Debug\STGModels.dll
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGModels\bin\Debug\STGModels.pdb
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGModels\obj\Debug\STGModels.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGModels\obj\Debug\STGModels.dll
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGModels\obj\Debug\STGModels.pdb

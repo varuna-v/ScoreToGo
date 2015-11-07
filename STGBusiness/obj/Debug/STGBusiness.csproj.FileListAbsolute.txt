@@ -1,0 +1,10 @@
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.dll
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.pdb
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.dll
+c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.pdb
