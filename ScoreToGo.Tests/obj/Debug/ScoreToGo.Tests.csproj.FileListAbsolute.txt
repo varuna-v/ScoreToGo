@@ -26,3 +26,31 @@ c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\ScoreToGo.Tests\bi
 c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\ScoreToGo.Tests\bin\Debug\Microsoft.Owin.xml
 c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.dll
 c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\ScoreToGo.Tests.dll.config
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\ScoreToGo.Tests.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\ScoreToGo.Tests.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\ScoreToGo.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Owin.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\ScoreToGo.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.pdb
