@@ -1,0 +1,32 @@
+﻿@model STGBusiness.Models.RotationModel
+
+@{
+    ViewBag.Title = "Rotation";
+}
+
+<h2>Rotation</h2>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<hr class="pad-0 mar-0" />
+
+    <div class="container-fluid pad-20">
+        <span class="col-lg-2">1</span>
+        <span class="col-lg-2">2</span>
+        <span class="col-lg-2">3</span>
+        <span class="col-lg-2">4</span>
+        <span class="col-lg-2">5</span>
+        <span class="col-lg-2">6</span>
+    </div>
+    <div class="container-fluid pad-20">
+        <span class="col-lg-2">@Model.ShirtNumbers[0]</span>
+        <span class="col-lg-2">@Model.ShirtNumbers[1]</span>
+        <span class="col-lg-2">@Model.ShirtNumbers[2]</span>
+        <span class="col-lg-2">@Model.ShirtNumbers[3]</span>
+        <span class="col-lg-2">@Model.ShirtNumbers[4]</span>
+        <span class="col-lg-2">@Model.ShirtNumbers[5]</span>
+    </div>
+    <div class="container-fluid pad-20">
+        <div class="btn">
+            @Html.ActionLink("Rotate", "Rotate", new { model = this.Model})
+        </div>
+    </div>

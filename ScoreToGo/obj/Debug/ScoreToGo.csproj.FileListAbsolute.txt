@@ -108,3 +108,5 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Microsoft.Owin.Security.Mi
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Debug\ScoreToGo.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Debug\ScoreToGo.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Debug\ScoreToGo.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STGBusiness.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STGBusiness.pdb

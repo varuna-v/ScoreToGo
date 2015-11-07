@@ -54,3 +54,5 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Microsoft.Owin
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\STGBusiness.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\STGBusiness.pdb
