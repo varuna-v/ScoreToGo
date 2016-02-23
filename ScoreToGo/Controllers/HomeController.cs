@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STGBusiness.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,11 @@ namespace ScoreToGo.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult StartRotation()
+        {
+            return RedirectToAction("Index", "Rotation");
         }
     }
 }

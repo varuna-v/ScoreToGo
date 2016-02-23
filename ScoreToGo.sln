@@ -4,13 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreToGo", "ScoreToGo\ScoreToGo.csproj", "{7C3FF466-3FEF-4D8A-A7B7-F90E439EE251}"
-	ProjectSection(ProjectDependencies) = postProject
-		{147C7260-F9E5-4384-A007-F2D659201896} = {147C7260-F9E5-4384-A007-F2D659201896}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreToGo.Tests", "ScoreToGo.Tests\ScoreToGo.Tests.csproj", "{AA5F923F-9550-4524-B9E4-25DA044CDFB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STGBusiness", "STGBusiness\STGBusiness.csproj", "{147C7260-F9E5-4384-A007-F2D659201896}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STGBusiness", "STGBusiness\STGBusiness.csproj", "{630D36E3-CE80-4679-8C18-CD254A117908}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +23,10 @@ Global
 		{AA5F923F-9550-4524-B9E4-25DA044CDFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA5F923F-9550-4524-B9E4-25DA044CDFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA5F923F-9550-4524-B9E4-25DA044CDFB3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{147C7260-F9E5-4384-A007-F2D659201896}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{147C7260-F9E5-4384-A007-F2D659201896}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{147C7260-F9E5-4384-A007-F2D659201896}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{147C7260-F9E5-4384-A007-F2D659201896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630D36E3-CE80-4679-8C18-CD254A117908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630D36E3-CE80-4679-8C18-CD254A117908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630D36E3-CE80-4679-8C18-CD254A117908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630D36E3-CE80-4679-8C18-CD254A117908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

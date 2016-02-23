@@ -1,32 +1,51 @@
-﻿@model STGBusiness.Models.RotationModel
-
+﻿@using STGBusiness.Enums;
+@model STGBusiness.Models.RotationModel
 @{
     ViewBag.Title = "Rotation";
 }
 
 <h2>Rotation</h2>
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<hr class="pad-0 mar-0" />
-
+@using (Html.BeginForm())
+{
     <div class="container-fluid pad-20">
-        <span class="col-lg-2">1</span>
-        <span class="col-lg-2">2</span>
-        <span class="col-lg-2">3</span>
-        <span class="col-lg-2">4</span>
-        <span class="col-lg-2">5</span>
-        <span class="col-lg-2">6</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[3] </span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[2]</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[1]</span>
     </div>
     <div class="container-fluid pad-20">
-        <span class="col-lg-2">@Model.ShirtNumbers[0]</span>
-        <span class="col-lg-2">@Model.ShirtNumbers[1]</span>
-        <span class="col-lg-2">@Model.ShirtNumbers[2]</span>
-        <span class="col-lg-2">@Model.ShirtNumbers[3]</span>
-        <span class="col-lg-2">@Model.ShirtNumbers[4]</span>
-        <span class="col-lg-2">@Model.ShirtNumbers[5]</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[4]</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[5]</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[0]</span>
+    </div>
+    for (var number = 0; number < Model.TeamRotations[0].ShirtNumbers.Length; number++)
+    {
+        @Html.HiddenFor(model => model.TeamRotations[0].ShirtNumbers[number]);
+    }
+    @Html.HiddenFor(model => model.TeamRotations[0].TeamLabel)
+    <div class="container-fluid pad-20">
+        <input type="submit" name="PointWinner" value="@Model.TeamRotations[0].TeamLabel" class="btn" />
+    </div>
+    
+    <hr class="pad-0 mar-0" />
+    
+    <div class="container-fluid pad-20">
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[3]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[2]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[1]</span>
     </div>
     <div class="container-fluid pad-20">
-        <div class="btn">
-            @Html.ActionLink("Rotate", "Rotate", new { model = this.Model})
-        </div>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[4]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[5]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[0]</span>
     </div>
+    for (var number = 0; number < Model.TeamRotations[1].ShirtNumbers.Length; number++)
+    {
+        @Html.HiddenFor(model => model.TeamRotations[1].ShirtNumbers[number]);
+    }
+    <input type="hidden" name="@Html.NameFor(m => m.TeamRotations[1].TeamLabel)" value="@Model.TeamRotations[1].TeamLabel" />
+    @*@Html.HiddenFor(model => model.TeamRotations[1].TeamLabel)*@
+    <div class="container-fluid pad-20">
+        <input type="submit" name="PointWinner" value="@Model.TeamRotations[1].TeamLabel" class="btn" />
+    </div>
+}

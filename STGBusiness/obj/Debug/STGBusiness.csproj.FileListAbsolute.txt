@@ -1,10 +1,18 @@
-c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.dll
-c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.pdb
-c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.csprojResolveAssemblyReference.cache
-c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.dll
-c:\users\user\documents\visual studio 2013\Projects\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Helpers.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Mvc.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Razor.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Helpers.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Mvc.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Razor.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.Razor.xml
