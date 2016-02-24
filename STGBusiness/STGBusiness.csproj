@@ -68,13 +68,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logic\RotationBusiness.cs" />
-    <Compile Include="Models\RotationModel.cs" />
-    <Compile Include="Models\TeamRotationModel.cs" />
+    <Compile Include="DomainModels\Rotation.cs" />
+    <Compile Include="DomainModels\TeamRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Enums\TeamLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

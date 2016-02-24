@@ -1,5 +1,4 @@
-﻿@using STGBusiness.Enums;
-@model STGBusiness.Models.RotationModel
+﻿@model ScoreToGo.Models.RotationModel
 @{
     ViewBag.Title = "Rotation";
 }
@@ -22,13 +21,12 @@
     {
         @Html.HiddenFor(model => model.TeamRotations[0].ShirtNumbers[number]);
     }
-    @Html.HiddenFor(model => model.TeamRotations[0].TeamLabel)
     <div class="container-fluid pad-20">
-        <input type="submit" name="PointWinner" value="@Model.TeamRotations[0].TeamLabel" class="btn" />
+        <button type="submit" name="PointWinner" value="0" class="btn" >Team A </button>
     </div>
-    
+
     <hr class="pad-0 mar-0" />
-    
+
     <div class="container-fluid pad-20">
         <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[3]</span>
         <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[2]</span>
@@ -43,9 +41,7 @@
     {
         @Html.HiddenFor(model => model.TeamRotations[1].ShirtNumbers[number]);
     }
-    <input type="hidden" name="@Html.NameFor(m => m.TeamRotations[1].TeamLabel)" value="@Model.TeamRotations[1].TeamLabel" />
-    @*@Html.HiddenFor(model => model.TeamRotations[1].TeamLabel)*@
     <div class="container-fluid pad-20">
-        <input type="submit" name="PointWinner" value="@Model.TeamRotations[1].TeamLabel" class="btn" />
+        <button type="submit" name="PointWinner" value="1" class="btn">Team B </button>
     </div>
 }

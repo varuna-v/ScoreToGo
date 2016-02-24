@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STGBusiness.Enums
+namespace ScoreToGo.Models
 {
-    public enum TeamLabel
+    public class RotationModel
     {
-        TeamA,
-        TeamB
+        public TeamRotationModel[] TeamRotations { get; set; }
     }
 }

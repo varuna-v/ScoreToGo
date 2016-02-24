@@ -1,5 +1,4 @@
-﻿using STGBusiness.Enums;
-using STGBusiness.Models;
+﻿using STGBusiness.DomainModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +9,18 @@ namespace STGBusiness.Logic
 {
     public class RotationBusiness
     {
-        public RotationModel Rotate(RotationModel model, TeamLabel pointWinner)
-        {
-            if (model == null || model.TeamRotations == null || model.TeamRotations.Length != 2)
-                throw new ArgumentException("Invalid rotation model");
-            
-            if (model.TeamRotations[0].TeamLabel == pointWinner)
-                model.TeamRotations[0] = Rotate(model.TeamRotations[0]);
-            else
-                model.TeamRotations[1] = Rotate(model.TeamRotations[1]);
-           
+        public Rotation Rotate(Rotation model, int pointWinner)
+        {            
+            model.TeamRotations[pointWinner] = Rotate(model.TeamRotations[pointWinner]);           
             return model;
         }
 
-        private TeamRotationModel Rotate(TeamRotationModel model)
+        private TeamRotation Rotate(TeamRotation model)
         {
             if (model == null || model.ShirtNumbers == null || model.ShirtNumbers.Length != 6)
                 throw new ArgumentException("Invalid team rotation model");
            
-            TeamRotationModel rotatedModel = new TeamRotationModel();
+            TeamRotation rotatedModel = new TeamRotation();
             rotatedModel.ShirtNumbers = new int[6];
             rotatedModel.ShirtNumbers[0] = model.ShirtNumbers[1];
             rotatedModel.ShirtNumbers[1] = model.ShirtNumbers[2];
@@ -36,7 +28,6 @@ namespace STGBusiness.Logic
             rotatedModel.ShirtNumbers[3] = model.ShirtNumbers[4];
             rotatedModel.ShirtNumbers[4] = model.ShirtNumbers[5];
             rotatedModel.ShirtNumbers[5] = model.ShirtNumbers[0];
-            rotatedModel.TeamLabel = model.TeamLabel;
             return rotatedModel;
         }
 
