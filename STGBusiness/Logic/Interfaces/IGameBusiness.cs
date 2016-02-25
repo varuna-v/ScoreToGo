@@ -6,7 +6,7 @@ namespace STGBusiness.Logic.Interfaces
     {
         Game StartGame(int bestOfNumberOfSets);
 
-        AddPointResult AddPoint(Game game, int pointWinner);
+        AddPointResult AddPoint(Game game, int pointWinner, int previousPointWinner);
 
         Game StartNewSet(Game game, TeamRotation[] teamRotations);
     }

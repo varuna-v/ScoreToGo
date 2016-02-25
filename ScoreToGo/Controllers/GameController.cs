@@ -24,6 +24,7 @@ namespace ScoreToGo.Controllers
             domainGame = _business.StartNewSet(domainGame, teamRotations);
             var gameModel = _mapper.Map(domainGame);
             TempData["GameModel"] = gameModel;
+            TempData["PreviousPointWinner"] = -1;
             return View(gameModel);
         }
 
@@ -31,8 +32,9 @@ namespace ScoreToGo.Controllers
         public ActionResult Index(int pointWinner)
         {
             var gameModel = (GameModel)TempData["GameModel"];
+            var previousPointWinner = (int)TempData["PreviousPointWinner"];
             var domainGame = _mapper.Map(gameModel);
-            var addPointResult = _business.AddPoint(domainGame, pointWinner);
+            var addPointResult = _business.AddPoint(domainGame, pointWinner, previousPointWinner);
 
             GameModel updatedGameModel;
             if (addPointResult.ResultStatus == STGBusiness.DomainModels.PointResultStatus.EndOfGame)
@@ -49,6 +51,7 @@ namespace ScoreToGo.Controllers
             else
                 updatedGameModel = _mapper.Map(addPointResult.Game);
             TempData["GameModel"] = updatedGameModel;
+            TempData["PreviousPointWinner"] = pointWinner;
             return View(updatedGameModel);
         }
     }

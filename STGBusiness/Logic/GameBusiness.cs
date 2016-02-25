@@ -22,11 +22,13 @@ namespace STGBusiness.Logic
             return game;
         }
 
-        public AddPointResult AddPoint(Game game, int pointWinner)
+        public AddPointResult AddPoint(Game game, int pointWinner, int previousPointWinner)
         {
             var currentSetNumber = GetHighestActivatedSetNumber(game);
             game.Sets[currentSetNumber].Score[pointWinner]++;
-            game.Sets[currentSetNumber].TeamRotations[pointWinner] = Rotate(game.Sets[currentSetNumber].TeamRotations[pointWinner]);
+
+            if (previousPointWinner > -1 && pointWinner != previousPointWinner)
+                game.Sets[currentSetNumber].TeamRotations[pointWinner] = Rotate(game.Sets[currentSetNumber].TeamRotations[pointWinner]);
 
             if (IsEndOfSet(game, currentSetNumber))
             {
@@ -63,7 +65,7 @@ namespace STGBusiness.Logic
             var score0 = game.Sets[currentSetNumber].Score[0];
             var score1 = game.Sets[currentSetNumber].Score[1];
             var targetScore = currentSetNumber == game.Sets.Length ? 15 : 25;
-            return (score0 > targetScore || score1 > targetScore) && Math.Abs(score0 - score1) >= 2;
+            return (score0 >= targetScore || score1 >= targetScore) && Math.Abs(score0 - score1) >= 2;
         }
 
         private bool IsEndOfGame(Game game)
