@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace STGBusiness.DomainModels
+﻿namespace STGBusiness.DomainModels
 {
     public class TeamRotation
     {

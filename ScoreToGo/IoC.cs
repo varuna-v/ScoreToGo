@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Autofac;
+﻿using Autofac;
+using ScoreToGo.Controllers;
 using ScoreToGo.Mappers;
 using ScoreToGo.Mappers.Interfaces;
 using STGBusiness.Logic;
 using STGBusiness.Logic.Interfaces;
-using ScoreToGo.Controllers;
+using System;
 
 namespace ScoreToGo
 {

@@ -1,11 +1,7 @@
-﻿using STGBusiness.Logic.Interfaces;
+﻿using ScoreToGo.Mappers.Interfaces;
 using ScoreToGo.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using STGBusiness.Logic.Interfaces;
 using System.Web.Mvc;
-using ScoreToGo.Mappers.Interfaces;
 
 namespace ScoreToGo.Controllers
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ScoreToGo.Models
+﻿namespace ScoreToGo.Models
 {
     public class TeamRotationModel
     {

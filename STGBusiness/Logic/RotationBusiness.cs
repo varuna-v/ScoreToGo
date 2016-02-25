@@ -1,10 +1,6 @@
 ﻿using STGBusiness.DomainModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using STGBusiness.Logic.Interfaces;
+using System;
 
 namespace STGBusiness.Logic
 {
