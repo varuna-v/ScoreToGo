@@ -1,24 +1,24 @@
-﻿using STGBusiness.Logic;
+﻿using STGBusiness.Logic.Interfaces;
 using ScoreToGo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ScoreToGo.Mappers;
+using ScoreToGo.Mappers.Interfaces;
 
 namespace ScoreToGo.Controllers
 {
     public class RotationController : Controller
     {
-        private readonly RotationBusiness _business;
+        private readonly IRotationBusiness _business;
 
-        private readonly RotationModelMapper _mapper;
+        private readonly IRotationModelMapper _mapper;
 
-        public RotationController()
+        public RotationController(IRotationBusiness business, IRotationModelMapper mapper)
         {
-            _business = new RotationBusiness();
-            _mapper = new RotationModelMapper();
+            _business = business;
+            _mapper = mapper;
         }
 
         public ActionResult Index()

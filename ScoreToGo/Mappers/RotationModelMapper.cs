@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using ScoreToGo.Models;
 using STGBusiness.DomainModels;
+using ScoreToGo.Mappers.Interfaces;
 
 namespace ScoreToGo.Mappers
 {
-    public class RotationModelMapper
+    public class RotationModelMapper : IRotationModelMapper
     {
         //!! fast mapper?
         public Rotation Map(RotationModel rotationModel)

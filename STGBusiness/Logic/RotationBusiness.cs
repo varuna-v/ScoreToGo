@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using STGBusiness.Logic.Interfaces;
 
 namespace STGBusiness.Logic
 {
-    public class RotationBusiness
+    public class RotationBusiness : IRotationBusiness
     {
         public Rotation Rotate(Rotation model, int pointWinner)
         {            

@@ -16,6 +16,10 @@ namespace ScoreToGo
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            IoC.Setup();
+
+            ControllerBuilder.Current.SetControllerFactory(typeof(ControllerFactory));
         }
     }
 }

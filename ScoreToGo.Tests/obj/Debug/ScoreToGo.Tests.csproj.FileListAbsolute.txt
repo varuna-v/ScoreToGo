@@ -56,3 +56,5 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Test
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\obj\Debug\ScoreToGo.Tests.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\STGBusiness.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\STGBusiness.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Autofac.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo.Tests\bin\Debug\Autofac.xml

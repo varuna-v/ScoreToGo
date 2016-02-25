@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\Interfaces\IRotationBusiness.cs" />
     <Compile Include="Logic\RotationBusiness.cs" />
     <Compile Include="DomainModels\Rotation.cs" />
     <Compile Include="DomainModels\TeamRotation.cs" />
