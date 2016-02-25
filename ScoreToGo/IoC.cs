@@ -30,13 +30,16 @@ namespace ScoreToGo
         {
             //Mappers
             _builder.RegisterType<RotationModelMapper>().As<IRotationModelMapper>();
+            _builder.RegisterType<GameModelMapper>().As<IGameModelMapper>();
 
             //Business
             _builder.RegisterType<RotationBusiness>().As<IRotationBusiness>();
+            _builder.RegisterType<GameBusiness>().As<IGameBusiness>();
 
             //Controllers
             _builder.RegisterType<HomeController>();
             _builder.RegisterType<RotationController>();
+            _builder.RegisterType<GameController>();
         }
 
         public static T ResolveDependency<T>()

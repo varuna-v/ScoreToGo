@@ -67,7 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModels\AddPointResult.cs" />
+    <Compile Include="DomainModels\Game.cs" />
+    <Compile Include="DomainModels\Set.cs" />
+    <Compile Include="Logic\GameBusiness.cs" />
     <Compile Include="Logic\Interfaces\IRotationBusiness.cs" />
+    <Compile Include="Logic\Interfaces\IGameBusiness.cs" />
     <Compile Include="Logic\RotationBusiness.cs" />
     <Compile Include="DomainModels\Rotation.cs" />
     <Compile Include="DomainModels\TeamRotation.cs" />

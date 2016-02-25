@@ -12,7 +12,7 @@ namespace ScoreToGo.Controllers
 
         public ActionResult StartRotation()
         {
-            return RedirectToAction("Index", "Rotation");
+            return RedirectToAction("Index", "Game");
         }
     }
 }
