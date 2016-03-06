@@ -6,6 +6,8 @@
 
         public TeamRotation[] TeamRotations { get; set; }
 
+        public int FirstServer { get; set; }
+
         public int Winner { get; set; }
     }
 }

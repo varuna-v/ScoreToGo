@@ -20,11 +20,11 @@ namespace ScoreToGo.Controllers
         public ActionResult Index()
         {
             var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
-            var domainGame = _business.StartGame(5);
-            domainGame = _business.StartNewSet(domainGame, teamRotations);
+            var firstServe = TestDataProvider.GetRandom(0, 1);
+            var domainGame = _business.StartGame(3, teamRotations, firstServe);
             var gameModel = _mapper.Map(domainGame);
             TempData["GameModel"] = gameModel;
-            TempData["PreviousPointWinner"] = -1;
+            TempData["ThisPointsServer"] = firstServe;
             return View(gameModel);
         }
 
@@ -32,26 +32,35 @@ namespace ScoreToGo.Controllers
         public ActionResult Index(int pointWinner)
         {
             var gameModel = (GameModel)TempData["GameModel"];
-            var previousPointWinner = (int)TempData["PreviousPointWinner"];
+            var thisPointsServer = (int)TempData["ThisPointsServer"];
             var domainGame = _mapper.Map(gameModel);
-            var addPointResult = _business.AddPoint(domainGame, pointWinner, previousPointWinner);
+            var addPointResult = _business.AddPoint(domainGame, pointWinner, thisPointsServer);
+            var nextServer = pointWinner;
 
             GameModel updatedGameModel;
             if (addPointResult.ResultStatus == STGBusiness.DomainModels.PointResultStatus.EndOfGame)
             {
                 updatedGameModel = _mapper.Map(addPointResult.Game);
-                //!! go to different view (with score sheet?)
+                return View("GameOver", updatedGameModel);
             }
             else if (addPointResult.ResultStatus == STGBusiness.DomainModels.PointResultStatus.EndOfSet)
             {
                 var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
-                var updatedDomainGame = _business.StartNewSet(addPointResult.Game, teamRotations);
+                nextServer = addPointResult.NextServer.Value;
+                var updatedDomainGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
+                updatedGameModel = _mapper.Map(updatedDomainGame);
+            }
+            else if (addPointResult.ResultStatus == STGBusiness.DomainModels.PointResultStatus.EndOfSetNextDeciding)
+            {
+                var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
+                nextServer = TestDataProvider.GetRandom(0, 1);
+                var updatedDomainGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
                 updatedGameModel = _mapper.Map(updatedDomainGame);
             }
             else
                 updatedGameModel = _mapper.Map(addPointResult.Game);
             TempData["GameModel"] = updatedGameModel;
-            TempData["PreviousPointWinner"] = pointWinner;
+            TempData["ThisPointsServer"] = nextServer;
             return View(updatedGameModel);
         }
     }

@@ -13,12 +13,16 @@ namespace ScoreToGo.Mappers
 
             if (domainGame.Sets != null)
             {
-                gameModel.Sets = new SetModel[5];
-                for(int setNumber = 0; setNumber < 5; setNumber++)
+                gameModel.Sets = new SetModel[domainGame.Sets.Length];
+                for (int setNumber = 0; setNumber < domainGame.Sets.Length; setNumber++)
                 {
                     if (domainGame.Sets[setNumber] != null)
                     {
-                        gameModel.Sets[setNumber] = new SetModel { Score = domainGame.Sets[setNumber].Score, Winner = domainGame.Sets[setNumber].Winner };
+                        gameModel.Sets[setNumber] = new SetModel { 
+                                                                    Score = domainGame.Sets[setNumber].Score,
+                                                                    FirstServer = domainGame.Sets[setNumber].FirstServer,
+                                                                    Winner = domainGame.Sets[setNumber].Winner 
+                                                                 };
 
                         gameModel.Sets[setNumber].TeamRotations = new TeamRotationModel[2];
                         gameModel.Sets[setNumber].TeamRotations[0] = new TeamRotationModel();
@@ -40,12 +44,16 @@ namespace ScoreToGo.Mappers
 
             if (gameModel.Sets != null)
             {
-                domainGame.Sets = new Set[5];
-                for (int setNumber = 0; setNumber < 5; setNumber++)
+                domainGame.Sets = new Set[gameModel.Sets.Length];
+                for (int setNumber = 0; setNumber < gameModel.Sets.Length; setNumber++)
                 {
                     if (gameModel.Sets[setNumber] != null)
                     {
-                        domainGame.Sets[setNumber] = new Set { Score = gameModel.Sets[setNumber].Score, Winner = gameModel.Sets[setNumber].Winner };
+                        domainGame.Sets[setNumber] = new Set { 
+                                                                 Score = gameModel.Sets[setNumber].Score, 
+                                                                 FirstServer = gameModel.Sets[setNumber].FirstServer,
+                                                                 Winner = gameModel.Sets[setNumber].Winner 
+                                                             };
 
                         domainGame.Sets[setNumber].TeamRotations = new TeamRotation[2];
                         domainGame.Sets[setNumber].TeamRotations[0] = new TeamRotation();

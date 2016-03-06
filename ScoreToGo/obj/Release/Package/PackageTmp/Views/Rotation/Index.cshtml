@@ -1,0 +1,47 @@
+﻿@model ScoreToGo.Models.RotationModel
+@{
+    ViewBag.Title = "Rotation";
+}
+
+<h2>Rotation</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid pad-20">
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[3] </span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[2]</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[1]</span>
+    </div>
+    <div class="container-fluid pad-20">
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[4]</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[5]</span>
+        <span class="col-lg-2">@Model.TeamRotations[0].ShirtNumbers[0]</span>
+    </div>
+    for (var number = 0; number < Model.TeamRotations[0].ShirtNumbers.Length; number++)
+    {
+        @Html.HiddenFor(model => model.TeamRotations[0].ShirtNumbers[number]);
+    }
+    <div class="container-fluid pad-20">
+        <button type="submit" name="PointWinner" value="0" class="btn" >Team A </button>
+    </div>
+
+    <hr class="pad-0 mar-0" />
+
+    <div class="container-fluid pad-20">
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[3]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[2]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[1]</span>
+    </div>
+    <div class="container-fluid pad-20">
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[4]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[5]</span>
+        <span class="col-lg-2">@Model.TeamRotations[1].ShirtNumbers[0]</span>
+    </div>
+    for (var number = 0; number < Model.TeamRotations[1].ShirtNumbers.Length; number++)
+    {
+        @Html.HiddenFor(model => model.TeamRotations[1].ShirtNumbers[number]);
+    }
+    <div class="container-fluid pad-20">
+        <button type="submit" name="PointWinner" value="1" class="btn">Team B </button>
+    </div>
+}

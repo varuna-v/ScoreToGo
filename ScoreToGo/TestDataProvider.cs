@@ -28,5 +28,10 @@ namespace ScoreToGo
             }
             return shirtNumbers;
         }
+
+        public static int GetRandom(int min, int max)
+        {
+            return _randomGenerator.Next(min, max + 1);
+        }
     }
 }

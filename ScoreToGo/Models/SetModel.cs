@@ -11,6 +11,8 @@ namespace ScoreToGo.Models
 
         public TeamRotationModel[] TeamRotations { get; set; }
 
+        public int FirstServer { get; set; }
+
         public int Winner { get; set; }
     }
 }

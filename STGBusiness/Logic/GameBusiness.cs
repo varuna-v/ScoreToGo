@@ -10,7 +10,7 @@ namespace STGBusiness.Logic
 {
     public class GameBusiness : IGameBusiness
     {
-        public Game StartGame(int bestOfNumberOfSets)
+        public Game StartGame(int bestOfNumberOfSets, TeamRotation[] teamRotations, int firstServe)
         {
             if (bestOfNumberOfSets % 2 == 0)
                 throw new ArgumentException("Best of number of sets must be odd", "bestOfNumberOfSets");
@@ -19,38 +19,46 @@ namespace STGBusiness.Logic
                 Sets = new Set[bestOfNumberOfSets],
                 SetWins = new int[2]
             };
+            game = StartNewSet(game, teamRotations, firstServe);
             return game;
         }
 
-        public AddPointResult AddPoint(Game game, int pointWinner, int previousPointWinner)
+        public AddPointResult AddPoint(Game game, int pointWinner, int thisPointsServer)
         {
-            var currentSetNumber = GetHighestActivatedSetNumber(game);
+            var currentSetNumber = game.GetHighestActivatedSetNumber();
             game.Sets[currentSetNumber].Score[pointWinner]++;
 
-            if (previousPointWinner > -1 && pointWinner != previousPointWinner)
+            if (thisPointsServer > -1 && pointWinner != thisPointsServer)
                 game.Sets[currentSetNumber].TeamRotations[pointWinner] = Rotate(game.Sets[currentSetNumber].TeamRotations[pointWinner]);
 
-            if (IsEndOfSet(game, currentSetNumber))
+            if (game.IsEndOfSet(currentSetNumber))
             {
                 game = FinishCurrentSet(game, currentSetNumber, pointWinner);
-                if (IsEndOfGame(game))
+                if (game.IsEndOfGame())
                     return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfGame };
+                if (game.IsNextSetDeciding())
+                    return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSetNextDeciding };
 
-                return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSet };
+                return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSet, NextServer = GetNewSetsFirstServer(game, currentSetNumber) };
             }
-            return new AddPointResult { Game = game, ResultStatus = PointResultStatus.Continue };
+            return new AddPointResult { Game = game, ResultStatus = PointResultStatus.Continue, NextServer = pointWinner };
         }
 
-        public Game StartNewSet(Game game, TeamRotation[] teamRotations)
+        public Game StartNewSet(Game game, TeamRotation[] teamRotations, int firstServe)
         {
-            var highestActivatedSetNumber = GetHighestActivatedSetNumber(game);
+            var highestActivatedSetNumber = game.GetHighestActivatedSetNumber();
             game.Sets[highestActivatedSetNumber + 1] = new Set
-            {
-                TeamRotations = teamRotations,
-                Score = new int[2]
-
-            };
+                                                            {
+                                                                TeamRotations = teamRotations,
+                                                                Score = new int[2],
+                                                                FirstServer = firstServe
+                                                            };
             return game;
+        }
+
+        private int GetNewSetsFirstServer(Game game, int highestActivatedSetNumber)
+        {
+            return game.Sets[highestActivatedSetNumber].FirstServer == 0 ? 1 : 0;
         }
 
         private Game FinishCurrentSet(Game game, int currentSetNumber, int pointWinner)
@@ -58,29 +66,6 @@ namespace STGBusiness.Logic
             game.Sets[currentSetNumber].Winner = pointWinner;
             game.SetWins[pointWinner]++;
             return game;
-        }
-
-        private bool IsEndOfSet(Game game, int currentSetNumber)
-        {
-            var score0 = game.Sets[currentSetNumber].Score[0];
-            var score1 = game.Sets[currentSetNumber].Score[1];
-            var targetScore = currentSetNumber == game.Sets.Length ? 15 : 25;
-            return (score0 >= targetScore || score1 >= targetScore) && Math.Abs(score0 - score1) >= 2;
-        }
-
-        private bool IsEndOfGame(Game game)
-        {
-            return game.SetWins != null && Math.Abs(game.SetWins[0] - game.SetWins[1]) >= game.TargetNumberOfSets;
-        }
-
-        private int GetHighestActivatedSetNumber(Game game)
-        {
-            for (int setNumber = 4; setNumber >= 0; setNumber--)
-            {
-                if (game.Sets[setNumber] != null && game.Sets[setNumber].Score != null)
-                    return setNumber;
-            }
-            return -1;
         }
 
         private TeamRotation Rotate(TeamRotation model)
