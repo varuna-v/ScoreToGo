@@ -10,7 +10,6 @@ namespace ScoreToGo
 {
     public static class IoC
     {
-
         private static IContainer _container;
 
         private static readonly ContainerBuilder _builder = new ContainerBuilder();
@@ -40,6 +39,8 @@ namespace ScoreToGo
             _builder.RegisterType<HomeController>();
             _builder.RegisterType<RotationController>();
             _builder.RegisterType<GameController>();
+
+            //DataAccess
         }
 
         public static T ResolveDependency<T>()
