@@ -1,8 +1,8 @@
-﻿using STGBusiness.DomainModels;
-using STGBusiness.Logic.Interfaces;
+﻿using STG.Business.DomainModels;
+using STG.Business.Logic.Interfaces;
 using System;
 
-namespace STGBusiness.Logic
+namespace STG.Business.Logic
 {
     public class RotationBusiness : IRotationBusiness
     {

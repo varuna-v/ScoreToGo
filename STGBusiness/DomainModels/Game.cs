@@ -1,5 +1,5 @@
 ﻿using System;
-namespace STGBusiness.DomainModels
+namespace STG.Business.DomainModels
 {
     public class Game
     {

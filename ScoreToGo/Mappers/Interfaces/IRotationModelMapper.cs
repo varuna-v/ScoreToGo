@@ -1,5 +1,5 @@
 ﻿using ScoreToGo.Models;
-using STGBusiness.DomainModels;
+using STG.Business.DomainModels;
 
 namespace ScoreToGo.Mappers.Interfaces
 {

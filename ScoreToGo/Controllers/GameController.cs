@@ -1,6 +1,6 @@
 ﻿using ScoreToGo.Mappers.Interfaces;
 using ScoreToGo.Models;
-using STGBusiness.Logic.Interfaces;
+using STG.Business.Logic.Interfaces;
 using System.Web.Mvc;
 
 namespace ScoreToGo.Controllers
@@ -38,19 +38,19 @@ namespace ScoreToGo.Controllers
             var nextServer = pointWinner;
 
             GameModel updatedGameModel;
-            if (addPointResult.ResultStatus == STGBusiness.DomainModels.PointResultStatus.EndOfGame)
+            if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfGame)
             {
                 updatedGameModel = _mapper.Map(addPointResult.Game);
                 return View("GameOver", updatedGameModel);
             }
-            else if (addPointResult.ResultStatus == STGBusiness.DomainModels.PointResultStatus.EndOfSet)
+            else if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfSet)
             {
                 var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = addPointResult.NextServer.Value;
                 var updatedDomainGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
                 updatedGameModel = _mapper.Map(updatedDomainGame);
             }
-            else if (addPointResult.ResultStatus == STGBusiness.DomainModels.PointResultStatus.EndOfSetNextDeciding)
+            else if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfSetNextDeciding)
             {
                 var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = TestDataProvider.GetRandom(0, 1);

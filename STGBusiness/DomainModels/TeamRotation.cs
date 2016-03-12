@@ -1,4 +1,4 @@
-﻿namespace STGBusiness.DomainModels
+﻿namespace STG.Business.DomainModels
 {
     public class TeamRotation
     {

@@ -240,9 +240,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\STGBusiness\STGBusiness.csproj">
+    <ProjectReference Include="..\STGBusiness\STG.Business.csproj">
       <Project>{630d36e3-ce80-4679-8c18-cd254a117908}</Project>
-      <Name>STGBusiness</Name>
+      <Name>STG.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

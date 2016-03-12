@@ -1,6 +1,6 @@
 ﻿using ScoreToGo.Mappers.Interfaces;
 using ScoreToGo.Models;
-using STGBusiness.DomainModels;
+using STG.Business.DomainModels;
 using System;
 
 namespace ScoreToGo.Mappers

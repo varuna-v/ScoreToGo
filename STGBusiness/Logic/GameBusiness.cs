@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using STGBusiness.DomainModels;
-using STGBusiness.Logic.Interfaces;
+using STG.Business.DomainModels;
+using STG.Business.Logic.Interfaces;
 
-namespace STGBusiness.Logic
+namespace STG.Business.Logic
 {
     public class GameBusiness : IGameBusiness
     {

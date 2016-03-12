@@ -2,8 +2,8 @@
 using ScoreToGo.Controllers;
 using ScoreToGo.Mappers;
 using ScoreToGo.Mappers.Interfaces;
-using STGBusiness.Logic;
-using STGBusiness.Logic.Interfaces;
+using STG.Business.Logic;
+using STG.Business.Logic.Interfaces;
 using System;
 
 namespace ScoreToGo
