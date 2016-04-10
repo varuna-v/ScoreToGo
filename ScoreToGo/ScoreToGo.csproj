@@ -240,6 +240,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\STG.DataAccess\STG.DataAccess.csproj">
+      <Project>{11deb114-5a79-4624-bab4-d337cf88509b}</Project>
+      <Name>STG.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\STGBusiness\STG.Business.csproj">
       <Project>{630d36e3-ce80-4679-8c18-cd254a117908}</Project>
       <Name>STG.Business</Name>

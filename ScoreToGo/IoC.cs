@@ -4,6 +4,10 @@ using ScoreToGo.Mappers;
 using ScoreToGo.Mappers.Interfaces;
 using STG.Business.Logic;
 using STG.Business.Logic.Interfaces;
+using STG.DataAccess.AccessObjects;
+using STG.DataAccess.AccessObjects.Interfaces;
+using STG.DataAccess.AccessObjects.Raven;
+using STG.DataAccess.Connections;
 using System;
 
 namespace ScoreToGo
@@ -41,6 +45,8 @@ namespace ScoreToGo
             _builder.RegisterType<GameController>();
 
             //DataAccess
+            _builder.RegisterType<RavenGameAccess>().As<IGameAccess>();
+            _builder.RegisterType<SqlDatabaseConnection>().As<IDatabaseConnection>();
         }
 
         public static T ResolveDependency<T>()

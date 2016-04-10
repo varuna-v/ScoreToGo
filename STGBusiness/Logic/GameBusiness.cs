@@ -5,11 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using STG.Business.DomainModels;
 using STG.Business.Logic.Interfaces;
+using STG.DataAccess.AccessObjects.Interfaces;
+using STGBusiness;
 
 namespace STG.Business.Logic
 {
     public class GameBusiness : IGameBusiness
     {
+        private IGameAccess _gameAccess;
+
+        public GameBusiness(IGameAccess gameAccess)
+        {
+            _gameAccess = gameAccess;
+            MapperCreator.Create();
+        }
+
         public Game StartGame(int bestOfNumberOfSets, TeamRotation[] teamRotations, int firstServe)
         {
             if (bestOfNumberOfSets % 2 == 0)
@@ -20,6 +30,7 @@ namespace STG.Business.Logic
                 SetWins = new int[2]
             };
             game = StartNewSet(game, teamRotations, firstServe);
+            //!!Start here Save(game);
             return game;
         }
 
@@ -84,5 +95,10 @@ namespace STG.Business.Logic
             return rotatedModel;
         }
 
+        private void Save(Game game)
+        {
+            DataAccess.DataModels.Game gameToStore = AutoMapper.Mapper.Map<DataAccess.DataModels.Game>(game);
+            _gameAccess.Save(gameToStore);
+        }
     }
 }

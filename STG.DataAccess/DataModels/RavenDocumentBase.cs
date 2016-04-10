@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STG.DataAccess.Connections
+namespace STG.DataAccess.DataModels
 {
-    interface IDataAccess
+    public abstract class RavenDocumentBase
     {
+        public int Id { get; set; }
     }
 }

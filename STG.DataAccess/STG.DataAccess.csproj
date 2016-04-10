@@ -30,7 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\packages\RavenDB.Client.3.0.30100\lib\net45\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.3.0.30100\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,9 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connections\IDataAccess.cs" />
-    <Compile Include="Connections\SqlServerDataAccess.cs" />
+    <Compile Include="AccessObjects\Interfaces\IGameAccess.cs" />
+    <Compile Include="AccessObjects\Interfaces\ITeamAccess.cs" />
+    <Compile Include="AccessObjects\Raven\RavenAccessBase.cs" />
+    <Compile Include="AccessObjects\Raven\RavenDocumentStoreHolder.cs" />
+    <Compile Include="AccessObjects\Raven\RavenGameAccess.cs" />
+    <Compile Include="Connections\IDatabaseConnection.cs" />
+    <Compile Include="Connections\SqlDatabaseConnection.cs" />
+    <Compile Include="DataModels\Game.cs" />
+    <Compile Include="DataModels\Set.cs" />
+    <Compile Include="DataModels\Player.cs" />
+    <Compile Include="DataModels\RavenDocumentBase.cs" />
+    <Compile Include="DataModels\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

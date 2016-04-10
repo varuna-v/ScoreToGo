@@ -29,8 +29,7 @@ CREATE TABLE GameSet
 CREATE TABLE Player
 (
 	Id int PRIMARY KEY Identity(1, 1) not null,
-	FirstName nvarchar(100),
-	LastName nvarchar(100),
+	Name nvarchar(200),
 	RegistrationNumber int
 )
 
@@ -50,3 +49,4 @@ CREATE TABLE GamePlayer
 	PlayerId int FOREIGN KEY References Player(Id),
 	ShirtNumber int
 )
+
