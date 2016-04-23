@@ -52,9 +52,11 @@
     <Compile Include="AccessObjects\Raven\RavenAccessBase.cs" />
     <Compile Include="AccessObjects\Raven\RavenDocumentStoreHolder.cs" />
     <Compile Include="AccessObjects\Raven\RavenGameAccess.cs" />
+    <Compile Include="AccessObjects\Raven\RavenTeamAccess.cs" />
     <Compile Include="Connections\IDatabaseConnection.cs" />
     <Compile Include="Connections\SqlDatabaseConnection.cs" />
     <Compile Include="DataModels\Game.cs" />
+    <Compile Include="DataModels\GamePlay.cs" />
     <Compile Include="DataModels\Set.cs" />
     <Compile Include="DataModels\Player.cs" />
     <Compile Include="DataModels\RavenDocumentBase.cs" />

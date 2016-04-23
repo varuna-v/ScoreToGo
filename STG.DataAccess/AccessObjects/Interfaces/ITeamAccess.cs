@@ -9,6 +9,7 @@ namespace STG.DataAccess.AccessObjects.Interfaces
 {
     public interface ITeamAccess
     {
-        List<Team> GetTeam();
+        Team GetTeam();
+        void AddTeam(Team team);
     }
 }

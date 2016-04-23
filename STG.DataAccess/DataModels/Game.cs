@@ -8,10 +8,8 @@ namespace STG.DataAccess.DataModels
 {
     public class Game : RavenDocumentBase
     {
-        public Team TeamA { get; set; }
-        public Team TeamB { get; set; }
-        public DateTime StartedAt{ get; set; }
-        public DateTime EndedAt { get; set; }
-        public Set[] Sets { get; set; }
+        public Team[] Teams { get; set; }
+        public GamePlay GamePlay { get; set; }
+        public DateTime StartedAt { get; set; }
     }
 }

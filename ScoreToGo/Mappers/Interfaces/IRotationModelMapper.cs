@@ -5,7 +5,7 @@ namespace ScoreToGo.Mappers.Interfaces
 {
     public interface IRotationModelMapper
     {
-        Rotation Map(RotationModel rotationModel);
-        RotationModel Map(Rotation domainModel);
+        DomainRotation Map(RotationModel rotationModel);
+        RotationModel Map(DomainRotation domainModel);
     }
 }

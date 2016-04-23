@@ -9,9 +9,9 @@ namespace ScoreToGo.Controllers
     {
         private readonly IGameBusiness _business;
 
-        private readonly IGameModelMapper _mapper;
+        private readonly IGamePlayModelMapper _mapper;
 
-        public GameController(IGameBusiness business, IGameModelMapper mapper)
+        public GameController(IGameBusiness business, IGamePlayModelMapper mapper)
         {
             _business = business;
             _mapper = mapper;
@@ -22,7 +22,7 @@ namespace ScoreToGo.Controllers
             var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
             var firstServe = TestDataProvider.GetRandom(0, 1);
             var domainGame = _business.StartGame(3, teamRotations, firstServe);
-            var gameModel = _mapper.Map(domainGame);
+            var gameModel = _mapper.Map(domainGame.GamePlay);
             TempData["GameModel"] = gameModel;
             TempData["ThisPointsServer"] = firstServe;
             return View(gameModel);
@@ -31,13 +31,13 @@ namespace ScoreToGo.Controllers
         [HttpPost]
         public ActionResult Index(int pointWinner)
         {
-            var gameModel = (GameModel)TempData["GameModel"];
+            var gameModel = (GamePlayModel)TempData["GameModel"];
             var thisPointsServer = (int)TempData["ThisPointsServer"];
             var domainGame = _mapper.Map(gameModel);
             var addPointResult = _business.AddPoint(domainGame, pointWinner, thisPointsServer);
             var nextServer = pointWinner;
 
-            GameModel updatedGameModel;
+            GamePlayModel updatedGameModel;
             if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfGame)
             {
                 updatedGameModel = _mapper.Map(addPointResult.Game);

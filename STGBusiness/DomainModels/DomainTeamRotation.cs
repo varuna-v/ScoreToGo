@@ -1,6 +1,6 @@
 ﻿namespace STG.Business.DomainModels
 {
-    public class TeamRotation
+    public class DomainTeamRotation
     {
         public int[] ShirtNumbers { get; set; }
     }

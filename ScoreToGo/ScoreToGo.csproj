@@ -96,6 +96,9 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="TinyMapper">
+      <HintPath>..\packages\TinyMapper.2.0.8\lib\net45\TinyMapper.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -162,6 +165,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="ControllerFactory.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\GameSetUpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RotationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,12 +173,16 @@
     </Compile>
     <Compile Include="IoC.cs" />
     <Compile Include="Mappers\GameModelMapper.cs" />
-    <Compile Include="Mappers\Interfaces\IGameModelMapper.cs" />
+    <Compile Include="Mappers\GamePlayModelMapper.cs" />
+    <Compile Include="Mappers\Interfaces\IGamePlayModelMapper.cs" />
     <Compile Include="Mappers\Interfaces\IRotationModelMapper.cs" />
     <Compile Include="Mappers\RotationModelMapper.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\GamePlayModel.cs" />
+    <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Models\RotationModel.cs" />
     <Compile Include="Models\SetModel.cs" />
+    <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Models\TeamRotationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionConstants.cs" />
@@ -230,6 +238,9 @@
     <Content Include="Views\Rotation\Index.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Game\GameOver.cshtml" />
+    <Content Include="Views\Shared\CreatePlayer.cshtml" />
+    <Content Include="Views\Shared\CreateTeam.cshtml" />
+    <Content Include="Views\GameSetUp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,72 +1,24 @@
-﻿using ScoreToGo.Mappers.Interfaces;
+﻿using Nelibur.ObjectMapper;
 using ScoreToGo.Models;
 using STG.Business.DomainModels;
-using System;
+using STG.Business.Mappers;
 
 namespace ScoreToGo.Mappers
 {
-    public class GameModelMapper : IGameModelMapper
+    public class GameModelMapper : IModelMapper<GameModel, DomainGame>
     {
-        public GameModel Map(Game domainGame)
+        public GameModel Map(DomainGame source)
         {
-            var gameModel = new GameModel();
-
-            if (domainGame.Sets != null)
-            {
-                gameModel.Sets = new SetModel[domainGame.Sets.Length];
-                for (int setNumber = 0; setNumber < domainGame.Sets.Length; setNumber++)
-                {
-                    if (domainGame.Sets[setNumber] != null)
-                    {
-                        gameModel.Sets[setNumber] = new SetModel { 
-                                                                    Score = domainGame.Sets[setNumber].Score,
-                                                                    FirstServer = domainGame.Sets[setNumber].FirstServer,
-                                                                    Winner = domainGame.Sets[setNumber].Winner 
-                                                                 };
-
-                        gameModel.Sets[setNumber].TeamRotations = new TeamRotationModel[2];
-                        gameModel.Sets[setNumber].TeamRotations[0] = new TeamRotationModel();
-                        gameModel.Sets[setNumber].TeamRotations[0].ShirtNumbers = domainGame.Sets[setNumber].TeamRotations[0].ShirtNumbers;
-                        gameModel.Sets[setNumber].TeamRotations[1] = new TeamRotationModel();
-                        gameModel.Sets[setNumber].TeamRotations[1].ShirtNumbers = domainGame.Sets[setNumber].TeamRotations[1].ShirtNumbers;                        
-                    }
-                }
-            }
-
-            gameModel.SetWins = domainGame.SetWins;
-           
-            return gameModel;
+            TinyMapper.Bind<DomainGame, GameModel>();
+            var result = TinyMapper.Map<GameModel>(source);
+            return result;
         }
 
-        public Game Map(GameModel gameModel)
+        public DomainGame Map(GameModel source)
         {
-            var domainGame = new Game();
-
-            if (gameModel.Sets != null)
-            {
-                domainGame.Sets = new Set[gameModel.Sets.Length];
-                for (int setNumber = 0; setNumber < gameModel.Sets.Length; setNumber++)
-                {
-                    if (gameModel.Sets[setNumber] != null)
-                    {
-                        domainGame.Sets[setNumber] = new Set { 
-                                                                 Score = gameModel.Sets[setNumber].Score, 
-                                                                 FirstServer = gameModel.Sets[setNumber].FirstServer,
-                                                                 Winner = gameModel.Sets[setNumber].Winner 
-                                                             };
-
-                        domainGame.Sets[setNumber].TeamRotations = new TeamRotation[2];
-                        domainGame.Sets[setNumber].TeamRotations[0] = new TeamRotation();
-                        domainGame.Sets[setNumber].TeamRotations[0].ShirtNumbers = gameModel.Sets[setNumber].TeamRotations[0].ShirtNumbers;
-                        domainGame.Sets[setNumber].TeamRotations[1] = new TeamRotation();
-                        domainGame.Sets[setNumber].TeamRotations[1].ShirtNumbers = gameModel.Sets[setNumber].TeamRotations[1].ShirtNumbers;
-                    }
-                }
-            }
-            
-            domainGame.SetWins = gameModel.SetWins;
-
-            return domainGame;
+            TinyMapper.Bind<GameModel, DomainGame>();
+            var result = TinyMapper.Map<DomainGame>(source);
+            return result;
         }
     }
 }

@@ -11,22 +11,22 @@ namespace ScoreToGo.Mappers
     public class RotationModelMapper : IRotationModelMapper
     {
         //!! fast mapper?
-        public Rotation Map(RotationModel rotationModel)
+        public DomainRotation Map(RotationModel rotationModel)
         {
-            var domainModel = new Rotation();
+            var domainModel = new DomainRotation();
 
-            domainModel.TeamRotations = new TeamRotation[2];
+            domainModel.TeamRotations = new DomainTeamRotation[2];
 
-            domainModel.TeamRotations[0] = new TeamRotation();
+            domainModel.TeamRotations[0] = new DomainTeamRotation();
             domainModel.TeamRotations[0].ShirtNumbers = rotationModel.TeamRotations[0].ShirtNumbers;
 
-            domainModel.TeamRotations[1] = new TeamRotation();
+            domainModel.TeamRotations[1] = new DomainTeamRotation();
             domainModel.TeamRotations[1].ShirtNumbers = rotationModel.TeamRotations[1].ShirtNumbers;
 
             return domainModel;
         }
 
-        public RotationModel Map(Rotation domainModel)
+        public RotationModel Map(DomainRotation domainModel)
         {
             var model = new RotationModel();
 

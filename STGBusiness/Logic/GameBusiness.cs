@@ -1,40 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using STG.Business.DomainModels;
+﻿using STG.Business.DomainModels;
 using STG.Business.Logic.Interfaces;
+using STG.Business.Mappers;
 using STG.DataAccess.AccessObjects.Interfaces;
-using STGBusiness;
+using STG.DataAccess.DataModels;
+using System;
 
 namespace STG.Business.Logic
 {
     public class GameBusiness : IGameBusiness
     {
-        private IGameAccess _gameAccess;
+        private readonly IGameAccess _gameAccess;
 
-        public GameBusiness(IGameAccess gameAccess)
+        private readonly IModelMapper<DomainGamePlay, GamePlay> _gamePlayMapper;
+
+        private readonly IModelMapper<DomainGame, Game> _gameMapper;
+
+        public GameBusiness(IGameAccess gameAccess, IModelMapper<DomainGamePlay, GamePlay> gamePlayMapper, IModelMapper<DomainGame, Game> gameMapper)
         {
             _gameAccess = gameAccess;
-            MapperCreator.Create();
+            _gamePlayMapper = gamePlayMapper;
+            _gameMapper = gameMapper;
         }
 
-        public Game StartGame(int bestOfNumberOfSets, TeamRotation[] teamRotations, int firstServe)
+        public DomainGame StartGame(int bestOfNumberOfSets, DomainTeamRotation[] teamRotations, int firstServe)
         {
             if (bestOfNumberOfSets % 2 == 0)
                 throw new ArgumentException("Best of number of sets must be odd", "bestOfNumberOfSets");
-            var game = new Game
+            var game = new DomainGame
             {
-                Sets = new Set[bestOfNumberOfSets],
-                SetWins = new int[2]
+                GamePlay = new DomainGamePlay
+                {
+                    Sets = new DomainSet[bestOfNumberOfSets],
+                    SetWins = new int[2]
+                },
+                StartedAt = DateTime.Now
             };
-            game = StartNewSet(game, teamRotations, firstServe);
-            //!!Start here Save(game);
+            game.GamePlay = StartNewSet(game.GamePlay, teamRotations, firstServe);
+            Save(game);
             return game;
         }
 
-        public AddPointResult AddPoint(Game game, int pointWinner, int thisPointsServer)
+        public AddPointResult AddPoint(DomainGamePlay game, int pointWinner, int thisPointsServer)
         {
             var currentSetNumber = game.GetHighestActivatedSetNumber();
             game.Sets[currentSetNumber].Score[pointWinner]++;
@@ -46,7 +52,10 @@ namespace STG.Business.Logic
             {
                 game = FinishCurrentSet(game, currentSetNumber, pointWinner);
                 if (game.IsEndOfGame())
+                {
+                    game = FinishGame(game);
                     return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfGame };
+                }
                 if (game.IsNextSetDeciding())
                     return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSetNextDeciding };
 
@@ -55,36 +64,44 @@ namespace STG.Business.Logic
             return new AddPointResult { Game = game, ResultStatus = PointResultStatus.Continue, NextServer = pointWinner };
         }
 
-        public Game StartNewSet(Game game, TeamRotation[] teamRotations, int firstServe)
+        public DomainGamePlay StartNewSet(DomainGamePlay game, DomainTeamRotation[] teamRotations, int firstServe)
         {
             var highestActivatedSetNumber = game.GetHighestActivatedSetNumber();
-            game.Sets[highestActivatedSetNumber + 1] = new Set
+            game.Sets[highestActivatedSetNumber + 1] = new DomainSet
                                                             {
                                                                 TeamRotations = teamRotations,
                                                                 Score = new int[2],
-                                                                FirstServer = firstServe
+                                                                FirstServer = firstServe,
+                                                                StartedAt = DateTime.Now
                                                             };
             return game;
         }
 
-        private int GetNewSetsFirstServer(Game game, int highestActivatedSetNumber)
+        private int GetNewSetsFirstServer(DomainGamePlay game, int highestActivatedSetNumber)
         {
             return game.Sets[highestActivatedSetNumber].FirstServer == 0 ? 1 : 0;
         }
 
-        private Game FinishCurrentSet(Game game, int currentSetNumber, int pointWinner)
+        private DomainGamePlay FinishCurrentSet(DomainGamePlay game, int currentSetNumber, int pointWinner)
         {
             game.Sets[currentSetNumber].Winner = pointWinner;
+            game.Sets[currentSetNumber].EndedAt = DateTime.Now;
             game.SetWins[pointWinner]++;
             return game;
         }
 
-        private TeamRotation Rotate(TeamRotation model)
+        private DomainGamePlay FinishGame(DomainGamePlay game)
+        {
+            game.EndedAt = DateTime.Now;
+            return game;
+        }
+
+        private DomainTeamRotation Rotate(DomainTeamRotation model)
         {
             if (model == null || model.ShirtNumbers == null || model.ShirtNumbers.Length != 6)
                 throw new ArgumentException("Invalid team rotation model");
 
-            TeamRotation rotatedModel = new TeamRotation();
+            DomainTeamRotation rotatedModel = new DomainTeamRotation();
             rotatedModel.ShirtNumbers = new int[6];
             rotatedModel.ShirtNumbers[0] = model.ShirtNumbers[1];
             rotatedModel.ShirtNumbers[1] = model.ShirtNumbers[2];
@@ -95,9 +112,15 @@ namespace STG.Business.Logic
             return rotatedModel;
         }
 
-        private void Save(Game game)
+        private void Save(DomainGamePlay gamePlay)
         {
-            DataAccess.DataModels.Game gameToStore = AutoMapper.Mapper.Map<DataAccess.DataModels.Game>(game);
+            DataAccess.DataModels.GamePlay gameToStore = _gamePlayMapper.Map(gamePlay);
+            _gameAccess.Save(gameToStore);
+        }
+
+        private void Save(DomainGame game)
+        {
+            Game gameToStore = _gameMapper.Map(game);
             _gameAccess.Save(gameToStore);
         }
     }

@@ -1,10 +1,6 @@
 ﻿using Raven.Client;
 using Raven.Client.Document;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace STG.DataAccess.AccessObjects.Raven
 {
@@ -14,14 +10,19 @@ namespace STG.DataAccess.AccessObjects.Raven
 
         public static IDocumentStore Store
         {
-            get { return store.Value; }
+            get
+            {
+                if (store == null)
+                    CreateStore();
+                return store.Value;
+            }
         }
 
         private static IDocumentStore CreateStore()
         {
             IDocumentStore store = new DocumentStore()
             {
-                Url = System.Configuration.ConfigurationManager.AppSettings["RavenDocumentStoreUrl"],
+                Url = System.Configuration.ConfigurationManager.AppSettings["RavenDataStoreUrl"],
                 DefaultDatabase = System.Configuration.ConfigurationManager.AppSettings["RavenDatabaseName"]
             }.Initialize();
 

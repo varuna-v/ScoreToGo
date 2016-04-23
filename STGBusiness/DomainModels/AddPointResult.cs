@@ -2,7 +2,7 @@
 {
     public class AddPointResult
     {
-        public Game Game { get; set; }
+        public DomainGamePlay Game { get; set; }
 
         public PointResultStatus ResultStatus { get; set; }
 

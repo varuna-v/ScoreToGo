@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -68,18 +65,26 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TinyMapper">
+      <HintPath>..\packages\TinyMapper.2.0.8\lib\net45\TinyMapper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModels\AddPointResult.cs" />
-    <Compile Include="DomainModels\Game.cs" />
-    <Compile Include="DomainModels\Set.cs" />
+    <Compile Include="DomainModels\DomainGame.cs" />
+    <Compile Include="DomainModels\DomainGamePlay.cs" />
+    <Compile Include="DomainModels\DomainPlayer.cs" />
+    <Compile Include="DomainModels\DomainSet.cs" />
+    <Compile Include="DomainModels\DomainTeam.cs" />
     <Compile Include="Logic\GameBusiness.cs" />
     <Compile Include="Logic\Interfaces\IRotationBusiness.cs" />
     <Compile Include="Logic\Interfaces\IGameBusiness.cs" />
     <Compile Include="Logic\RotationBusiness.cs" />
-    <Compile Include="DomainModels\Rotation.cs" />
-    <Compile Include="DomainModels\TeamRotation.cs" />
-    <Compile Include="MapperCreator.cs" />
+    <Compile Include="DomainModels\DomainRotation.cs" />
+    <Compile Include="DomainModels\DomainTeamRotation.cs" />
+    <Compile Include="Mappers\DomainAndDataAccess\GameMapper.cs" />
+    <Compile Include="Mappers\DomainAndDataAccess\GamePlayMapper.cs" />
+    <Compile Include="Mappers\IModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -114,11 +114,10 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Autofac.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Autofac.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.DataAccess.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.dll
-C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\AutoMapper.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.DataAccess.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.xml
-C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\AutoMapper.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\TinyMapper.dll

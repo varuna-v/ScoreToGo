@@ -9,8 +9,9 @@ namespace STG.DataAccess.AccessObjects.Interfaces
 {
     public interface IGameAccess
     {
-        Game Get(int id);
-
+        Game GetGame(int id);
+        GamePlay GetGamePlay(int id);
         void Save(Game game);
+        void Save(GamePlay gamePlay);
     }
 }

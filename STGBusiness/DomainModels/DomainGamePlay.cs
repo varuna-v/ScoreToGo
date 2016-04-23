@@ -1,11 +1,15 @@
 ﻿using System;
 namespace STG.Business.DomainModels
 {
-    public class Game
+    public class DomainGamePlay
     {
-        public Set[] Sets { get; set; }
+        public int Id { get; set; }
+
+        public DomainSet[] Sets { get; set; }
 
         public int[] SetWins { get; set; }
+
+        public DateTime EndedAt { get; set; } //Move to domain game
 
         private int _targetNumberOfSetsToWinGame;
         private int TargetNumberOfSetsToWinGame
@@ -47,3 +51,4 @@ namespace STG.Business.DomainModels
         }
     }
 }
+//!! game model and a gameplay model to reduce mapping?

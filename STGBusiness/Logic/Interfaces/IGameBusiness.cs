@@ -4,10 +4,12 @@ namespace STG.Business.Logic.Interfaces
 {
     public interface IGameBusiness
     {
-        Game StartGame(int bestOfNumberOfSets, TeamRotation[] teamRotations, int firstServe);
+        DomainGame StartGame(int bestOfNumberOfSets, DomainTeamRotation[] teamRotations, int firstServe);
 
-        AddPointResult AddPoint(Game game, int pointWinner, int thisPointsServer);
+        AddPointResult AddPoint(DomainGamePlay game, int pointWinner, int thisPointsServer);
 
-        Game StartNewSet(Game game, TeamRotation[] teamRotations, int firstServe);
+        DomainGamePlay StartNewSet(DomainGamePlay game, DomainTeamRotation[] teamRotations, int firstServe);
+
+        //DomainGame GetGame(int gameId);
     }
 }
