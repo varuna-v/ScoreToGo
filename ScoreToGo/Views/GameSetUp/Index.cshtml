@@ -1,17 +1,17 @@
 ﻿@model ScoreToGo.Models.GameModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "New Game";
 }
 
-<h2>Index</h2>
+<h2>Game</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>GameModel</h4>
+        <h4>New Game</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -25,9 +25,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Teams, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                hello
                @foreach(var team in Model.Teams)
                {
-                   @Html.Partial("CreateTeam", new ScoreToGo.Models.TeamModel())
+                 //  @Html.Partial("CreateTeam", new ScoreToGo.Models.TeamModel())
                }
             </div>
         </div>

@@ -1,15 +1,14 @@
 ﻿using STG.Business.DomainModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace STG.Business.Logic.Interfaces
+namespace STGBusiness.Logic.Interfaces
 {
     public interface IGameBusiness
     {
-        DomainGame StartGame(int bestOfNumberOfSets, DomainTeamRotation[] teamRotations, int firstServe);
-
-        AddPointResult AddPoint(DomainGamePlay game, int pointWinner, int thisPointsServer);
-
-        DomainGamePlay StartNewSet(DomainGamePlay game, DomainTeamRotation[] teamRotations, int firstServe);
-
-        //DomainGame GetGame(int gameId);
+        DomainGame GetInitailGame();
     }
 }

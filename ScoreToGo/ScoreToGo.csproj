@@ -172,7 +172,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IoC.cs" />
-    <Compile Include="Mappers\GameModelMapper.cs" />
     <Compile Include="Mappers\GamePlayModelMapper.cs" />
     <Compile Include="Mappers\Interfaces\IGamePlayModelMapper.cs" />
     <Compile Include="Mappers\Interfaces\IRotationModelMapper.cs" />
@@ -238,8 +237,8 @@
     <Content Include="Views\Rotation\Index.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Game\GameOver.cshtml" />
-    <Content Include="Views\Shared\CreatePlayer.cshtml" />
-    <Content Include="Views\Shared\CreateTeam.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PlayerModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TeamModel.cshtml" />
     <Content Include="Views\GameSetUp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

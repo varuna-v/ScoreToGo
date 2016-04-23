@@ -76,15 +76,21 @@
     <Compile Include="DomainModels\DomainPlayer.cs" />
     <Compile Include="DomainModels\DomainSet.cs" />
     <Compile Include="DomainModels\DomainTeam.cs" />
+    <Compile Include="Logic\GamePlayBusiness.cs" />
     <Compile Include="Logic\GameBusiness.cs" />
-    <Compile Include="Logic\Interfaces\IRotationBusiness.cs" />
     <Compile Include="Logic\Interfaces\IGameBusiness.cs" />
+    <Compile Include="Logic\Interfaces\IRotationBusiness.cs" />
+    <Compile Include="Logic\Interfaces\IGamePlayBusiness.cs" />
+    <Compile Include="Logic\Interfaces\ITeamBusiness.cs" />
     <Compile Include="Logic\RotationBusiness.cs" />
     <Compile Include="DomainModels\DomainRotation.cs" />
     <Compile Include="DomainModels\DomainTeamRotation.cs" />
+    <Compile Include="Logic\TeamBusiness.cs" />
     <Compile Include="Mappers\DomainAndDataAccess\GameMapper.cs" />
     <Compile Include="Mappers\DomainAndDataAccess\GamePlayMapper.cs" />
+    <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\IModelMapper.cs" />
+    <Compile Include="Mappers\Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

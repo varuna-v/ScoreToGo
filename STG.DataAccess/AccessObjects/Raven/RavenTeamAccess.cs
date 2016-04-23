@@ -1,20 +1,26 @@
 ﻿using STG.DataAccess.AccessObjects.Interfaces;
-using System;
+using STG.DataAccess.DataModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace STG.DataAccess.AccessObjects.Raven
 {
     public class RavenTeamAccess : RavenAccessBase, ITeamAccess
     {
-        public DataModels.Team GetTeam()
+        public List<Team> GetAllTeams()
         {
-            throw new NotImplementedException();
+            var teams = RetreiveCollection<Team>(t => true);
+            if (teams == null)
+                return null;
+            return teams.ToList();
         }
 
-        public void AddTeam(DataModels.Team team)
+        public Team GetTeam(int id)
+        {
+            return Retreive<DataModels.Team>(t => t.Id == id);
+        }
+
+        public void AddTeam(Team team)
         {
             Store(team);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ScoreToGo.Models
 {
@@ -16,5 +17,10 @@ namespace ScoreToGo.Models
         public DateTime StartedAt { get; set; }
 
         public GamePlayModel GamePlay { get; set; }
+
+        //Validation - must be odd
+        public int BestOfNumberOfSets { get; set; }
+
+        public List<TeamModel> AvailableTeams { get; set; }
     }
 }

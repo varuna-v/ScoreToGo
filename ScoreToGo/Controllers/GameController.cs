@@ -7,11 +7,11 @@ namespace ScoreToGo.Controllers
 {
     public class GameController : Controller
     {
-        private readonly IGameBusiness _business;
+        private readonly IGamePlayBusiness _business;
 
         private readonly IGamePlayModelMapper _mapper;
 
-        public GameController(IGameBusiness business, IGamePlayModelMapper mapper)
+        public GameController(IGamePlayBusiness business, IGamePlayModelMapper mapper)
         {
             _business = business;
             _mapper = mapper;

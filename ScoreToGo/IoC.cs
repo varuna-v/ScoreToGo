@@ -14,6 +14,7 @@ using System;
 using STG.DataAccess.DataModels;
 using STG.Business.DomainModels;
 using ScoreToGo.Models;
+using STG.Business.Mappers;
 
 namespace ScoreToGo
 {
@@ -41,17 +42,17 @@ namespace ScoreToGo
             _builder.RegisterType<SqlDatabaseConnection>().As<IDatabaseConnection>();
 
             //Mappers Business - DateAccess
+            _builder.RegisterType<Mapper>().As<IMapper>().SingleInstance();
             _builder.RegisterType<GamePlayMapper>().As<IModelMapper<DomainGamePlay, GamePlay>>().SingleInstance();
             _builder.RegisterType<GameMapper>().As<IModelMapper<DomainGame, Game>>().SingleInstance();
 
             //Business
             _builder.RegisterType<RotationBusiness>().As<IRotationBusiness>();
-            _builder.RegisterType<GameBusiness>().As<IGameBusiness>();
+            _builder.RegisterType<GamePlayBusiness>().As<IGamePlayBusiness>();
 
             //Mappers Controller - Business
             _builder.RegisterType<RotationModelMapper>().As<IRotationModelMapper>();
             _builder.RegisterType<GamePlayModelMapper>().As<IGamePlayModelMapper>();
-            _builder.RegisterType<GameModelMapper>().As<IModelMapper<GameModel, DomainGame>>().SingleInstance();
 
             //Controllers
             _builder.RegisterType<HomeController>();
