@@ -9,42 +9,89 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
         <h4>New Game</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartedAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartedAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartedAt, "", new { @class = "text-danger" })
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default form-group">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Basic Information
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        @Html.LabelFor(model => model.StartedAt, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.StartedAt, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StartedAt, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default form-group">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Team A
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        @if (string.IsNullOrEmpty(Model.TeamACode))
+                        {
+                            <span class="col-md-10 pad-10">
+                                @Html.DropDownListFor(m => m.TeamACode, Model.AvailableTeamList, new { @onchange = "submitform();", @class = "form-control" })
+                            </span>
+                        }
+                        else
+                        {
+                            @Model.TeamACode
+
+                            for (int i = 0; i < Model.Teams[0].Players.Count; i++)
+                            {
+                                @Html.EditorFor(model => model.Teams[0].Players[i])
+                            }
+
+                            @Html.HiddenFor(model => model.TeamACode)//  @Html.Partial("CreateTeam", new ScoreToGo.ViewModels.TeamModel())
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default form-group">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Team B
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        @if (string.IsNullOrEmpty(Model.TeamBCode))
+                        {
+                            <span class="col-md-10 pad-10">
+                                @Html.DropDownListFor(m => m.TeamBCode, Model.AvailableTeamList, new { @onchange = "submitform();", @class = "form-control" })
+                            </span>
+                        }
+                        else
+                        {
+                            @Model.TeamBCode
+                            @Model.TeamACode
+
+                            for (int i = 0; i < Model.Teams[1].Players.Count; i++)
+                            {
+                                @Html.EditorFor(model => model.Teams[1].Players[i])
+                            }
+
+                            @Html.HiddenFor(m => m.TeamBCode)//  @Html.Partial("CreateTeam", new ScoreToGo.ViewModels.TeamModel())
+                        }
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Teams, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @if (Model.Teams.Any())
-                {
-                    foreach (var team in Model.Teams)
-                    {
-                        //  @Html.Partial("CreateTeam", new ScoreToGo.ViewModels.TeamModel())
-                    }
-                }
-                else
-                {
-                    <span class="col-md-10">
-                        @Html.DropDownListFor(m => m.Teams[0], Model.AvailableTeamList)
-                    </span>
-                    <span class="col-md-10">
-                        @Html.DropDownListFor(m => m.Teams[1], Model.AvailableTeamList)
-                    </span>
-                }
-
-            </div>
-        </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -52,3 +99,10 @@
         </div>
     </div>
 }
+
+<script>
+    //!! common place for scripts?
+    function submitform() {
+        $('form').submit();
+    }
+</script>

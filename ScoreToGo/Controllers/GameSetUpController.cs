@@ -24,10 +24,9 @@ namespace ScoreToGo.Controllers
 
         public ActionResult Index()
         {
-            var Game = _business.GetInitialGame();
-            var model = _mapper.Map<Game, GameModel>(Game);
-            var availableTeams = _teamBusiness.GetAllTeams();
-            model.AvailableTeams = _mapper.Map<List<Team>, List<TeamModel>>(availableTeams);
+            var game = _business.GetInitialGame();
+            var model = _mapper.Map<Game, GameModel>(game);
+            model.AvailableTeams = GetAvailableTeams();
             return View(model);
             //var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
             //var firstServe = TestDataProvider.GetRandom(0, 1);
@@ -41,7 +40,14 @@ namespace ScoreToGo.Controllers
         [HttpPost]
         public ActionResult Index(GameModel model)
         {
+            model.AvailableTeams = GetAvailableTeams();
             return View(model);
+        }
+
+        private List<TeamModel> GetAvailableTeams()
+        {
+            var availableTeams = _teamBusiness.GetAllTeams();
+            return _mapper.Map<List<Team>, List<TeamModel>>(availableTeams);
         }
     }
 }

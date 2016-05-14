@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace ScoreToGo.ViewModels
 {
@@ -9,12 +10,33 @@ namespace ScoreToGo.ViewModels
     {
         public GameModel()
         {
-            Teams = new TeamModel[2];
+            Teams = new List<TeamModel>() { new TeamModel(), new TeamModel() };
         }
 
         public int Id { get; set; }
 
-        public TeamModel[] Teams { get; set; }
+        private List<TeamModel> _teams;
+        public List<TeamModel> Teams
+        {
+            get
+            {
+                List<TeamModel> _teams = new List<TeamModel>() { new TeamModel(), new TeamModel() };
+                if (!string.IsNullOrEmpty(TeamACode))
+                {
+                    _teams[0] = AvailableTeams.FirstOrDefault(t => t.Code == TeamACode);
+                }
+
+                if (!string.IsNullOrEmpty(TeamBCode))
+                {
+                    _teams[1] = AvailableTeams.FirstOrDefault(t => t.Code == TeamBCode);
+                }
+                return _teams;
+            }
+            set { _teams = value; }
+        }
+
+        public string TeamACode { get; set; }
+        public string TeamBCode { get; set; }
 
         [Display(Name = "Start Time")]
         public DateTime StartedAt { get; set; }
@@ -30,7 +52,9 @@ namespace ScoreToGo.ViewModels
         {
             get
             {
-                return new SelectList(AvailableTeams, "Code", "Name");
+                List<TeamModel> teams = new List<TeamModel>() { new TeamModel { Code = string.Empty, Name = "Select" } };
+                if (AvailableTeams != null) { teams.AddRange(AvailableTeams); }
+                return new SelectList(teams, "Code", "Name", new { Code = string.Empty, Name = "Select" });
             }
         }
     }

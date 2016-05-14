@@ -15,7 +15,7 @@ namespace ScoreToGo.ViewModels
         
         public string Name { get; set; }
         public string Colour { get; set; }
-        public Color TeamColour { get { return Color.FromName(Colour); } }
+        public Color TeamColour { get { return Colour == null ? Color.White : Color.FromName(Colour); } } //!! default colour
         public string Code { get; set; }
         public List<PlayerModel> Players { get; set; }
         public string GameLetter { get; set; }
