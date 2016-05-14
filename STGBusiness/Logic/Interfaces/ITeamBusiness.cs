@@ -1,10 +1,10 @@
-﻿using STG.Business.DomainModels;
+﻿using STG.Domain.Models;
 using System.Collections.Generic;
 
 namespace STG.Business.Logic.Interfaces
 {
     public interface ITeamBusiness
     {
-        List<DomainTeam> GetTeams();
+        List<Team> GetAllTeams();
     }
 }

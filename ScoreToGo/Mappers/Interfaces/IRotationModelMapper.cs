@@ -1,11 +1,12 @@
-﻿using ScoreToGo.Models;
+﻿using ScoreToGo.ViewModels;
 using STG.Business.DomainModels;
+using STG.Domain.Models;
 
 namespace ScoreToGo.Mappers.Interfaces
 {
     public interface IRotationModelMapper
     {
-        DomainRotation Map(RotationModel rotationModel);
-        RotationModel Map(DomainRotation domainModel);
+        Rotation Map(RotationModel rotationModel);
+        RotationModel Map(Rotation domainModel);
     }
 }

@@ -57,3 +57,12 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Microsoft.Owin.Security.Mi
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Release\ScoreToGo.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Release\ScoreToGo.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Release\ScoreToGo.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.DataAccess.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\TinyMapper.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.DataAccess.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.xml

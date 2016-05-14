@@ -1,24 +1,24 @@
 ﻿using Raven.Client;
 using Raven.Client.Linq;
-using STG.DataAccess.DataModels;
+using STG.DataAccess.AccessObjects.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace STG.DataAccess.AccessObjects.Raven
 {
-    public abstract class RavenAccessBase
+    public class RavenDataAccess : IAccessData
     {
-        protected void Store(RavenDocumentBase document)
+        public void Save(object objectToStore)
         {
             using (IDocumentSession session = RavenDocumentStoreHolder.Store.OpenSession())
             {
-                session.Store(document);
+                session.Store(objectToStore);
                 session.SaveChanges();
             }
         }
 
-        protected T Retreive<T>(Func<T, bool> predicate)
+        public T GetFirst<T>(Func<T, bool> predicate)
         {
             using (IDocumentSession session = RavenDocumentStoreHolder.Store.OpenSession())
             {
@@ -26,11 +26,19 @@ namespace STG.DataAccess.AccessObjects.Raven
             }
         }
 
-        protected IEnumerable<T> RetreiveCollection<T>(Func<T, bool> predicate)
+        public IEnumerable<T> GetMany<T>(Func<T, bool> predicate)
         {
             using (IDocumentSession session = RavenDocumentStoreHolder.Store.OpenSession())
             {
                 return session.Query<T>().Where(x => predicate(x));
+            }
+        }
+
+        public IEnumerable<T> GetAll<T>()
+        {
+            using (IDocumentSession session = RavenDocumentStoreHolder.Store.OpenSession())
+            {
+                return session.Query<T>();
             }
         }
     }

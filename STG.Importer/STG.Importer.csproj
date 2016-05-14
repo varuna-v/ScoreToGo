@@ -53,6 +53,10 @@
       <Project>{11deb114-5a79-4624-bab4-d337cf88509b}</Project>
       <Name>STG.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\STG.Domain\STG.Domain.csproj">
+      <Project>{88fa9d0b-b687-4cc9-97e1-08258a5948a2}</Project>
+      <Name>STG.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

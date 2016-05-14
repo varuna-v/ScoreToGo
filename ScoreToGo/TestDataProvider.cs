@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using STG.Business.DomainModels;
+using STG.Domain.Models;
 
 namespace ScoreToGo
 {
@@ -11,11 +12,11 @@ namespace ScoreToGo
         private static Random _randomGenerator = new Random();
 
         //!! remove all refrences to use input data
-        public static DomainTeamRotation[] GetRandomTeamRotationModels()
+        public static TeamRotation[] GetRandomTeamRotationModels()
         {
-            var teamRotations = new DomainTeamRotation[2];
-            teamRotations[0] = new DomainTeamRotation() { ShirtNumbers = GetRandomShirtNumbers() };
-            teamRotations[1] = new DomainTeamRotation() { ShirtNumbers = GetRandomShirtNumbers() };
+            var teamRotations = new TeamRotation[2];
+            teamRotations[0] = new TeamRotation() { ShirtNumbers = GetRandomShirtNumbers() };
+            teamRotations[1] = new TeamRotation() { ShirtNumbers = GetRandomShirtNumbers() };
             return teamRotations;
         }
 

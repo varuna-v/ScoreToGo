@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace ScoreToGo.Models
+namespace ScoreToGo.ViewModels
 {
     public class TeamModel
     {
@@ -12,7 +12,7 @@ namespace ScoreToGo.Models
         {
             Players = new List<PlayerModel>();
         }
-
+        
         public string Name { get; set; }
         public string Colour { get; set; }
         public Color TeamColour { get { return Color.FromName(Colour); } }

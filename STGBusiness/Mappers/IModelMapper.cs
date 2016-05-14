@@ -1,4 +1,4 @@
-﻿namespace STG.Business.Mappers
+﻿namespace STG.Domain.Mappers
 {
     public interface IModelMapper<TSource, TTarget>
     {

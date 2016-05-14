@@ -7,8 +7,8 @@
     <ProjectGuid>{630D36E3-CE80-4679-8C18-CD254A117908}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>STGBusiness</RootNamespace>
-    <AssemblyName>STGBusiness</AssemblyName>
+    <RootNamespace>STG.Business</RootNamespace>
+    <AssemblyName>STG.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -70,12 +70,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainModels\AddPointResult.cs" />
-    <Compile Include="DomainModels\DomainGame.cs" />
-    <Compile Include="DomainModels\DomainGamePlay.cs" />
-    <Compile Include="DomainModels\DomainPlayer.cs" />
-    <Compile Include="DomainModels\DomainSet.cs" />
-    <Compile Include="DomainModels\DomainTeam.cs" />
     <Compile Include="Logic\GamePlayBusiness.cs" />
     <Compile Include="Logic\GameBusiness.cs" />
     <Compile Include="Logic\Interfaces\IGameBusiness.cs" />
@@ -83,14 +77,8 @@
     <Compile Include="Logic\Interfaces\IGamePlayBusiness.cs" />
     <Compile Include="Logic\Interfaces\ITeamBusiness.cs" />
     <Compile Include="Logic\RotationBusiness.cs" />
-    <Compile Include="DomainModels\DomainRotation.cs" />
-    <Compile Include="DomainModels\DomainTeamRotation.cs" />
     <Compile Include="Logic\TeamBusiness.cs" />
-    <Compile Include="Mappers\DomainAndDataAccess\GameMapper.cs" />
-    <Compile Include="Mappers\DomainAndDataAccess\GamePlayMapper.cs" />
-    <Compile Include="Mappers\IMapper.cs" />
-    <Compile Include="Mappers\IModelMapper.cs" />
-    <Compile Include="Mappers\Mapper.cs" />
+    <Compile Include="Models\AddPointResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +89,10 @@
     <ProjectReference Include="..\STG.DataAccess\STG.DataAccess.csproj">
       <Project>{11deb114-5a79-4624-bab4-d337cf88509b}</Project>
       <Name>STG.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\STG.Domain\STG.Domain.csproj">
+      <Project>{88fa9d0b-b687-4cc9-97e1-08258a5948a2}</Project>
+      <Name>STG.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

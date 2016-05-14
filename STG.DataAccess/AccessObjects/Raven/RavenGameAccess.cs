@@ -1,5 +1,5 @@
 ﻿using STG.DataAccess.AccessObjects.Interfaces;
-using STG.DataAccess.DataModels;
+using STG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace STG.DataAccess.AccessObjects.Raven
 {
-    public class RavenGameAccess : RavenAccessBase, IGameAccess
+    public class RavenGameAccess : RavenDataAccess, IGameAccess
     {
         public Game GetGame(int id)
         {
-            return Retreive<DataModels.Game>(g => g.Id == id);
+            return GetFirst<Game>(g => g.Id == id);
         }
 
         public GamePlay GetGamePlay(int id)
@@ -25,12 +25,12 @@ namespace STG.DataAccess.AccessObjects.Raven
         {
             var game = GetGame(gamePlay.GameId);
             game.GamePlay = gamePlay;
-            Store(game);
+            Save(game);
         }
 
-        public void Save(DataModels.Game game)
+        public void Save(Game game)
         {
-            Store(game);
+            base.Save(game);
         }
     }
 }

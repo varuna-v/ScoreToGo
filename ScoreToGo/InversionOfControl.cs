@@ -2,23 +2,18 @@
 using ScoreToGo.Controllers;
 using ScoreToGo.Mappers;
 using ScoreToGo.Mappers.Interfaces;
+using STG.Business.DomainModels;
 using STG.Business.Logic;
 using STG.Business.Logic.Interfaces;
-using STG.DataAccess.AccessObjects;
 using STG.DataAccess.AccessObjects.Interfaces;
 using STG.DataAccess.AccessObjects.Raven;
-using STG.DataAccess.Connections;
-using STG.Business.Mappers;
-using STG.Business.Mappers.DomainAndDataAccess;
+using STG.Domain.Mappers;
+using STG.Domain.Models;
 using System;
-using STG.DataAccess.DataModels;
-using STG.Business.DomainModels;
-using ScoreToGo.Models;
-using STG.Business.Mappers;
 
 namespace ScoreToGo
 {
-    public static class IoC
+    public static class InversionOfControl
     {
         private static IContainer _container;
 
@@ -37,18 +32,18 @@ namespace ScoreToGo
 
         public static void Setup()
         {
-            //DataAccess
-            _builder.RegisterType<RavenGameAccess>().As<IGameAccess>();
-            _builder.RegisterType<SqlDatabaseConnection>().As<IDatabaseConnection>();
-
-            //Mappers Business - DateAccess
+            //Domain Mappers 
             _builder.RegisterType<Mapper>().As<IMapper>().SingleInstance();
-            _builder.RegisterType<GamePlayMapper>().As<IModelMapper<DomainGamePlay, GamePlay>>().SingleInstance();
-            _builder.RegisterType<GameMapper>().As<IModelMapper<DomainGame, Game>>().SingleInstance();
 
+            //DataAccess
+            _builder.RegisterType<RavenDataAccess>().As<IAccessData>();
+            _builder.RegisterType<RavenGameAccess>().As<IGameAccess>();
+            
             //Business
             _builder.RegisterType<RotationBusiness>().As<IRotationBusiness>();
+            _builder.RegisterType<TeamBusiness>().As<ITeamBusiness>();
             _builder.RegisterType<GamePlayBusiness>().As<IGamePlayBusiness>();
+            _builder.RegisterType<GameBusiness>().As<IGameBusiness>();
 
             //Mappers Controller - Business
             _builder.RegisterType<RotationModelMapper>().As<IRotationModelMapper>();

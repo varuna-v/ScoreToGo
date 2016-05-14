@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STG.DataAccess", "STG.DataA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STG.Importer", "STG.Importer\STG.Importer.csproj", "{2E743568-6617-44A6-B9B0-58580184AD1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STG.Domain", "STG.Domain\STG.Domain.csproj", "{88FA9D0B-B687-4CC9-97E1-08258A5948A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2E743568-6617-44A6-B9B0-58580184AD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E743568-6617-44A6-B9B0-58580184AD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E743568-6617-44A6-B9B0-58580184AD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FA9D0B-B687-4CC9-97E1-08258A5948A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FA9D0B-B687-4CC9-97E1-08258A5948A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FA9D0B-B687-4CC9-97E1-08258A5948A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FA9D0B-B687-4CC9-97E1-08258A5948A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

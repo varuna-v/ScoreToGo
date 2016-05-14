@@ -1,5 +1,3 @@
-C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.dll
-C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STGBusiness.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Helpers.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.Mvc.dll
@@ -14,8 +12,6 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPage
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STG.Business.csprojResolveAssemblyReference.cache
-C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.dll
-C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STGBusiness.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STG.DataAccess.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\Raven.Client.Lightweight.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\Raven.Abstractions.dll
@@ -25,3 +21,9 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\Raven.Client.Light
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\Raven.Abstractions.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\Raven.Abstractions.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\TinyMapper.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STG.Business.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STG.Business.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STG.Business.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\obj\Debug\STG.Business.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STG.Domain.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\STGBusiness\bin\Debug\STG.Domain.pdb

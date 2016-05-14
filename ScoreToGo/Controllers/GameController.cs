@@ -1,5 +1,5 @@
 ﻿using ScoreToGo.Mappers.Interfaces;
-using ScoreToGo.Models;
+using ScoreToGo.ViewModels;
 using STG.Business.Logic.Interfaces;
 using System.Web.Mvc;
 
@@ -21,8 +21,8 @@ namespace ScoreToGo.Controllers
         {
             var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
             var firstServe = TestDataProvider.GetRandom(0, 1);
-            var domainGame = _business.StartGame(3, teamRotations, firstServe);
-            var gameModel = _mapper.Map(domainGame.GamePlay);
+            var Game = _business.StartGame(3, teamRotations, firstServe);
+            var gameModel = _mapper.Map(Game.GamePlay);
             TempData["GameModel"] = gameModel;
             TempData["ThisPointsServer"] = firstServe;
             return View(gameModel);
@@ -33,8 +33,8 @@ namespace ScoreToGo.Controllers
         {
             var gameModel = (GamePlayModel)TempData["GameModel"];
             var thisPointsServer = (int)TempData["ThisPointsServer"];
-            var domainGame = _mapper.Map(gameModel);
-            var addPointResult = _business.AddPoint(domainGame, pointWinner, thisPointsServer);
+            var Game = _mapper.Map(gameModel);
+            var addPointResult = _business.AddPoint(Game, pointWinner, thisPointsServer);
             var nextServer = pointWinner;
 
             GamePlayModel updatedGameModel;
@@ -47,15 +47,15 @@ namespace ScoreToGo.Controllers
             {
                 var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = addPointResult.NextServer.Value;
-                var updatedDomainGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
-                updatedGameModel = _mapper.Map(updatedDomainGame);
+                var updatedGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
+                updatedGameModel = _mapper.Map(updatedGame);
             }
             else if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfSetNextDeciding)
             {
                 var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = TestDataProvider.GetRandom(0, 1);
-                var updatedDomainGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
-                updatedGameModel = _mapper.Map(updatedDomainGame);
+                var updatedGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
+                updatedGameModel = _mapper.Map(updatedGame);
             }
             else
                 updatedGameModel = _mapper.Map(addPointResult.Game);

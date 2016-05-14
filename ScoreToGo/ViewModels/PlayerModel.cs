@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace ScoreToGo.Models
+namespace ScoreToGo.ViewModels
 {
     public class PlayerModel
     {

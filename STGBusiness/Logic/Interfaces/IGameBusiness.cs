@@ -1,14 +1,10 @@
-﻿using STG.Business.DomainModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using STG.Domain.Models;
 
-namespace STGBusiness.Logic.Interfaces
+namespace STG.Business.Logic.Interfaces
 {
     public interface IGameBusiness
     {
-        DomainGame GetInitailGame();
+        Game GetInitialGame();
+        Game GetGame(int gameId);
     }
 }

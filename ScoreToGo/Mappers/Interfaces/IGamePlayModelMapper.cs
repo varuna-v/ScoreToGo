@@ -1,12 +1,13 @@
-﻿using ScoreToGo.Models;
+﻿using ScoreToGo.ViewModels;
 using STG.Business.DomainModels;
+using STG.Domain.Models;
 
 namespace ScoreToGo.Mappers.Interfaces
 {
     public interface IGamePlayModelMapper
     {
-        GamePlayModel Map(DomainGamePlay domainGame);
+        GamePlayModel Map(GamePlay Game);
 
-        DomainGamePlay Map(GamePlayModel gameModel);
+        GamePlay Map(GamePlayModel gameModel);
     }
 }

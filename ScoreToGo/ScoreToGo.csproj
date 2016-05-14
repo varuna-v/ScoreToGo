@@ -171,18 +171,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IoC.cs" />
+    <Compile Include="InversionOfControl.cs" />
     <Compile Include="Mappers\GamePlayModelMapper.cs" />
     <Compile Include="Mappers\Interfaces\IGamePlayModelMapper.cs" />
     <Compile Include="Mappers\Interfaces\IRotationModelMapper.cs" />
     <Compile Include="Mappers\RotationModelMapper.cs" />
-    <Compile Include="Models\GameModel.cs" />
-    <Compile Include="Models\GamePlayModel.cs" />
-    <Compile Include="Models\PlayerModel.cs" />
-    <Compile Include="Models\RotationModel.cs" />
-    <Compile Include="Models\SetModel.cs" />
-    <Compile Include="Models\TeamModel.cs" />
-    <Compile Include="Models\TeamRotationModel.cs" />
+    <Compile Include="ViewModels\GameModel.cs" />
+    <Compile Include="ViewModels\GamePlayModel.cs" />
+    <Compile Include="ViewModels\PlayerModel.cs" />
+    <Compile Include="ViewModels\RotationModel.cs" />
+    <Compile Include="ViewModels\SetModel.cs" />
+    <Compile Include="ViewModels\TeamModel.cs" />
+    <Compile Include="ViewModels\TeamRotationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionConstants.cs" />
     <Compile Include="Startup.cs" />
@@ -206,6 +206,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\aws.pubxml" />
     <None Include="Properties\PublishProfiles\volleyballapp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -253,6 +254,10 @@
     <ProjectReference Include="..\STG.DataAccess\STG.DataAccess.csproj">
       <Project>{11deb114-5a79-4624-bab4-d337cf88509b}</Project>
       <Name>STG.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\STG.Domain\STG.Domain.csproj">
+      <Project>{88fa9d0b-b687-4cc9-97e1-08258a5948a2}</Project>
+      <Name>STG.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\STGBusiness\STG.Business.csproj">
       <Project>{630d36e3-ce80-4679-8c18-cd254a117908}</Project>

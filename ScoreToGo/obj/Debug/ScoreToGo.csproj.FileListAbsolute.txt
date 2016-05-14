@@ -108,8 +108,6 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Microsoft.Owin.Security.Mi
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Debug\ScoreToGo.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Debug\ScoreToGo.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\obj\Debug\ScoreToGo.pdb
-C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STGBusiness.dll
-C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STGBusiness.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Autofac.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Autofac.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.DataAccess.dll
@@ -121,3 +119,7 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.x
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\TinyMapper.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Business.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Business.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Domain.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Domain.pdb

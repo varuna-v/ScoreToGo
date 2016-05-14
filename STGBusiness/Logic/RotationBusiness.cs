@@ -1,4 +1,4 @@
-﻿using STG.Business.DomainModels;
+﻿using STG.Domain.Models;
 using STG.Business.Logic.Interfaces;
 using System;
 
@@ -6,18 +6,18 @@ namespace STG.Business.Logic
 {
     public class RotationBusiness : IRotationBusiness
     {
-        public DomainRotation Rotate(DomainRotation model, int pointWinner)
+        public Rotation Rotate(Rotation model, int pointWinner)
         {            
             model.TeamRotations[pointWinner] = Rotate(model.TeamRotations[pointWinner]);           
             return model;
         }
 
-        private DomainTeamRotation Rotate(DomainTeamRotation model)
+        private TeamRotation Rotate(TeamRotation model)
         {
             if (model == null || model.ShirtNumbers == null || model.ShirtNumbers.Length != 6)
                 throw new ArgumentException("Invalid team rotation model");
            
-            DomainTeamRotation rotatedModel = new DomainTeamRotation();
+            TeamRotation rotatedModel = new TeamRotation();
             rotatedModel.ShirtNumbers = new int[6];
             rotatedModel.ShirtNumbers[0] = model.ShirtNumbers[1];
             rotatedModel.ShirtNumbers[1] = model.ShirtNumbers[2];

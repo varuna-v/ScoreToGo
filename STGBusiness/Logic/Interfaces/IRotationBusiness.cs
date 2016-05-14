@@ -1,9 +1,9 @@
-﻿using STG.Business.DomainModels;
+﻿using STG.Domain.Models;
 
 namespace STG.Business.Logic.Interfaces
 {
     public interface IRotationBusiness
     {
-        DomainRotation Rotate(DomainRotation model, int pointWinner);
+        Rotation Rotate(Rotation model, int pointWinner);
     }
 }

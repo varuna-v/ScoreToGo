@@ -1,4 +1,4 @@
-﻿@model ScoreToGo.Models.GameModel
+﻿@model ScoreToGo.ViewModels.GameModel
 
 @{
     ViewBag.Title = "New Game";
@@ -6,10 +6,10 @@
 
 <h2>Game</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>New Game</h4>
         <hr />
@@ -25,11 +25,23 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Teams, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                hello
-               @foreach(var team in Model.Teams)
-               {
-                 //  @Html.Partial("CreateTeam", new ScoreToGo.Models.TeamModel())
-               }
+                @if (Model.Teams.Any())
+                {
+                    foreach (var team in Model.Teams)
+                    {
+                        //  @Html.Partial("CreateTeam", new ScoreToGo.ViewModels.TeamModel())
+                    }
+                }
+                else
+                {
+                    <span class="col-md-10">
+                        @Html.DropDownListFor(m => m.Teams[0], Model.AvailableTeamList)
+                    </span>
+                    <span class="col-md-10">
+                        @Html.DropDownListFor(m => m.Teams[1], Model.AvailableTeamList)
+                    </span>
+                }
+
             </div>
         </div>
 
@@ -40,7 +52,3 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

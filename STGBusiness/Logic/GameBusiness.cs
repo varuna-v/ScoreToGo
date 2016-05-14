@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using STG.Business.Logic.Interfaces;
+using STG.Domain.Models;
+using System;
 
-namespace STGBusiness.Logic
+namespace STG.Business.Logic
 {
-    public class GameBusiness
+    public class GameBusiness : IGameBusiness
     {
+        public Game GetInitialGame()
+        {
+            var game = new Game()
+            {
+                StartedAt = DateTime.Now,
+                Teams = new Team[2]
+            };
+            return game;
+        }
+
+        public Game GetGame(int gameId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

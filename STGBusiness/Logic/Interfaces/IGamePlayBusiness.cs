@@ -1,15 +1,14 @@
 ﻿using STG.Business.DomainModels;
+using STG.Domain.Models;
 
 namespace STG.Business.Logic.Interfaces
 {
     public interface IGamePlayBusiness
     {
-        DomainGame StartGame(int bestOfNumberOfSets, DomainTeamRotation[] teamRotations, int firstServe);
+        Game StartGame(int bestOfNumberOfSets, TeamRotation[] teamRotations, int firstServe);
 
-        AddPointResult AddPoint(DomainGamePlay game, int pointWinner, int thisPointsServer);
+        AddPointResult AddPoint(GamePlay game, int pointWinner, int thisPointsServer);
 
-        DomainGamePlay StartNewSet(DomainGamePlay game, DomainTeamRotation[] teamRotations, int firstServe);
-
-        //DomainGame GetGame(int gameId);
+        GamePlay StartNewSet(GamePlay game, TeamRotation[] teamRotations, int firstServe);               
     }
 }

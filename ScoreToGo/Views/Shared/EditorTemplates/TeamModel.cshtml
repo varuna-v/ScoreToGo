@@ -1,4 +1,4 @@
-﻿@model ScoreToGo.Models.TeamModel
+﻿@model ScoreToGo.ViewModels.TeamModel
 
 @using (Html.BeginForm())
 {
@@ -45,7 +45,7 @@
             <div class="col-md-10">
                 @for (int i = 0; i < 10; i++)
                 {
-                    @Html.Partial("CreatePlayer", new ScoreToGo.Models.PlayerModel())
+                    @Html.Partial("CreatePlayer", new ScoreToGo.ViewModels.PlayerModel())
                 }
             </div>
         </div>

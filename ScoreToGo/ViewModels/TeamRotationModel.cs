@@ -1,4 +1,4 @@
-﻿namespace ScoreToGo.Models
+﻿namespace ScoreToGo.ViewModels
 {
     public class TeamRotationModel
     {

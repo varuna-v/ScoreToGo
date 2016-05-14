@@ -1,8 +1,9 @@
-﻿namespace STG.Business.DomainModels
+﻿using STG.Domain.Models;
+namespace STG.Business.DomainModels
 {
     public class AddPointResult
     {
-        public DomainGamePlay Game { get; set; }
+        public GamePlay Game { get; set; }
 
         public PointResultStatus ResultStatus { get; set; }
 

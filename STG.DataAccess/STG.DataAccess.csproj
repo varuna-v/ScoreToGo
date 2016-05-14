@@ -47,24 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessObjects\Interfaces\IAccessData.cs" />
     <Compile Include="AccessObjects\Interfaces\IGameAccess.cs" />
-    <Compile Include="AccessObjects\Interfaces\ITeamAccess.cs" />
-    <Compile Include="AccessObjects\Raven\RavenAccessBase.cs" />
+    <Compile Include="AccessObjects\Raven\RavenDataAccess.cs" />
     <Compile Include="AccessObjects\Raven\RavenDocumentStoreHolder.cs" />
     <Compile Include="AccessObjects\Raven\RavenGameAccess.cs" />
-    <Compile Include="AccessObjects\Raven\RavenTeamAccess.cs" />
     <Compile Include="Connections\IDatabaseConnection.cs" />
     <Compile Include="Connections\SqlDatabaseConnection.cs" />
-    <Compile Include="DataModels\Game.cs" />
-    <Compile Include="DataModels\GamePlay.cs" />
-    <Compile Include="DataModels\Set.cs" />
-    <Compile Include="DataModels\Player.cs" />
-    <Compile Include="DataModels\RavenDocumentBase.cs" />
-    <Compile Include="DataModels\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\STG.Domain\STG.Domain.csproj">
+      <Project>{88fa9d0b-b687-4cc9-97e1-08258a5948a2}</Project>
+      <Name>STG.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

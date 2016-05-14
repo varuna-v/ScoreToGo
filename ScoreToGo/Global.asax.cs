@@ -13,7 +13,7 @@ namespace ScoreToGo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            IoC.Setup();
+            InversionOfControl.Setup();
 
             ControllerBuilder.Current.SetControllerFactory(typeof(ControllerFactory));
         }

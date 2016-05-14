@@ -1,29 +1,24 @@
-﻿using STG.Business.DomainModels;
+﻿using STG.Business.Logic.Interfaces;
 using STG.DataAccess.AccessObjects.Interfaces;
-using STG.DataAccess.DataModels;
-using STG.Business.Logic.Interfaces;
-using STG.Business.Mappers;
+using STG.Domain.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace STG.Business.Logic
 {
     public class TeamBusiness : ITeamBusiness
     {
-        private readonly IMapper _mapper;
+        private readonly IAccessData _dataAccess;
 
-        private readonly ITeamAccess _teamAccess;
-
-        public TeamBusiness(IMapper mapper, ITeamAccess teamAccess)
+        public TeamBusiness(IAccessData dataAccess)
         {
-            _mapper = mapper;
-            _teamAccess = teamAccess;
+            _dataAccess = dataAccess;
         }
 
-        public List<STG.Business.DomainModels.DomainTeam> GetTeams()
+        public List<Team> GetAllTeams()
         {
-            var teams = _teamAccess.GetAllTeams();
-            var domainTeams = _mapper.Map<List<Team>, List<DomainTeam>>(teams);
-            return domainTeams;
+            var teams = _dataAccess.GetAll<Team>().ToList();
+            return teams;
         }
     }
 }
