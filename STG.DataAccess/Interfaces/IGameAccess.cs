@@ -1,6 +1,6 @@
 ﻿using STG.Domain.Models;
 
-namespace STG.DataAccess.AccessObjects.Interfaces
+namespace STG.DataAccess.Interfaces
 {
     public interface IGameAccess
     {

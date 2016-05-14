@@ -47,13 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessObjects\Interfaces\IAccessData.cs" />
-    <Compile Include="AccessObjects\Interfaces\IGameAccess.cs" />
-    <Compile Include="AccessObjects\Raven\RavenDataAccess.cs" />
-    <Compile Include="AccessObjects\Raven\RavenDocumentStoreHolder.cs" />
-    <Compile Include="AccessObjects\Raven\RavenGameAccess.cs" />
-    <Compile Include="Connections\IDatabaseConnection.cs" />
-    <Compile Include="Connections\SqlDatabaseConnection.cs" />
+    <Compile Include="Interfaces\IAccessData.cs" />
+    <Compile Include="Interfaces\IGameAccess.cs" />
+    <Compile Include="Raven\RavenDataAccess.cs" />
+    <Compile Include="Raven\RavenDocumentStoreHolder.cs" />
+    <Compile Include="Raven\RavenGameAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

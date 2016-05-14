@@ -1,4 +1,4 @@
-﻿using STG.DataAccess.AccessObjects.Interfaces;
+﻿using STG.DataAccess.Interfaces;
 using STG.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STG.DataAccess.AccessObjects.Raven
+namespace STG.DataAccess.Raven
 {
     public class RavenGameAccess : RavenDataAccess, IGameAccess
     {

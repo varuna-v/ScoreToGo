@@ -1,12 +1,11 @@
-﻿using STG.Business.DomainModels;
-using STG.Business.Logic.Interfaces;
-using STG.DataAccess.AccessObjects.Interfaces;
+﻿using STG.Business.Interfaces;
+using STG.DataAccess.Interfaces;
 using STG.Domain.Mappers;
 using STG.Domain.Models;
 using System;
 using STG.Domain.Extensions;
 
-namespace STG.Business.Logic
+namespace STG.Business
 {
     public class GamePlayBusiness : IGamePlayBusiness
     {

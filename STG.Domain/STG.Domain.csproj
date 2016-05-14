@@ -45,6 +45,7 @@
     <Compile Include="Extensions\GamePlayExtensions.cs" />
     <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\Mapper.cs" />
+    <Compile Include="Models\AddPointResult.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GamePlay.cs" />
     <Compile Include="Models\Player.cs" />

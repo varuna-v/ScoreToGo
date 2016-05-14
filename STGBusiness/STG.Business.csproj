@@ -70,15 +70,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\GamePlayBusiness.cs" />
-    <Compile Include="Logic\GameBusiness.cs" />
-    <Compile Include="Logic\Interfaces\IGameBusiness.cs" />
-    <Compile Include="Logic\Interfaces\IRotationBusiness.cs" />
-    <Compile Include="Logic\Interfaces\IGamePlayBusiness.cs" />
-    <Compile Include="Logic\Interfaces\ITeamBusiness.cs" />
-    <Compile Include="Logic\RotationBusiness.cs" />
-    <Compile Include="Logic\TeamBusiness.cs" />
-    <Compile Include="Models\AddPointResult.cs" />
+    <Compile Include="GamePlayBusiness.cs" />
+    <Compile Include="GameBusiness.cs" />
+    <Compile Include="Interfaces\IGameBusiness.cs" />
+    <Compile Include="Interfaces\IRotationBusiness.cs" />
+    <Compile Include="Interfaces\IGamePlayBusiness.cs" />
+    <Compile Include="Interfaces\ITeamBusiness.cs" />
+    <Compile Include="RotationBusiness.cs" />
+    <Compile Include="TeamBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

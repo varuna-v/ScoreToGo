@@ -1,11 +1,11 @@
 ﻿using Raven.Client;
 using Raven.Client.Linq;
-using STG.DataAccess.AccessObjects.Interfaces;
+using STG.DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace STG.DataAccess.AccessObjects.Raven
+namespace STG.DataAccess.Raven
 {
     public class RavenDataAccess : IAccessData
     {

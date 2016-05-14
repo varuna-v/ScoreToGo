@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using ScoreToGo.Controllers;
-using STG.Business.Logic;
-using STG.Business.Logic.Interfaces;
-using STG.DataAccess.AccessObjects.Interfaces;
-using STG.DataAccess.AccessObjects.Raven;
+using STG.Business;
+using STG.Business.Interfaces;
+using STG.DataAccess.Interfaces;
+using STG.DataAccess.Raven;
 using STG.Domain.Mappers;
 using System;
 

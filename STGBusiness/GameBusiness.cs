@@ -1,8 +1,8 @@
-﻿using STG.Business.Logic.Interfaces;
+﻿using STG.Business.Interfaces;
 using STG.Domain.Models;
 using System;
 
-namespace STG.Business.Logic
+namespace STG.Business
 {
     public class GameBusiness : IGameBusiness
     {

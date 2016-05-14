@@ -2,7 +2,7 @@
 using Raven.Client.Document;
 using System;
 
-namespace STG.DataAccess.AccessObjects.Raven
+namespace STG.DataAccess.Raven
 {
     public class RavenDocumentStoreHolder
     {

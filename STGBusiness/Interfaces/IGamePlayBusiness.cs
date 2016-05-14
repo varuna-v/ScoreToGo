@@ -1,7 +1,6 @@
-﻿using STG.Business.DomainModels;
-using STG.Domain.Models;
+﻿using STG.Domain.Models;
 
-namespace STG.Business.Logic.Interfaces
+namespace STG.Business.Interfaces
 {
     public interface IGamePlayBusiness
     {

@@ -1,7 +1,7 @@
 ﻿using STG.Domain.Models;
 using System.Collections.Generic;
 
-namespace STG.Business.Logic.Interfaces
+namespace STG.Business.Interfaces
 {
     public interface ITeamBusiness
     {

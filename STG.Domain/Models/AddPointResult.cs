@@ -1,5 +1,4 @@
-﻿using STG.Domain.Models;
-namespace STG.Business.DomainModels
+﻿namespace STG.Domain.Models
 {
     public class AddPointResult
     {

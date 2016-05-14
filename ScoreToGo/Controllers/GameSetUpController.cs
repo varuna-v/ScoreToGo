@@ -1,5 +1,5 @@
 ﻿using ScoreToGo.ViewModels;
-using STG.Business.Logic.Interfaces;
+using STG.Business.Interfaces;
 using STG.Domain.Mappers;
 using STG.Domain.Models;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using STG.DataAccess.AccessObjects.Raven;
+﻿using STG.DataAccess.Raven;
 using System.Collections.Generic;
 using STG.Domain.Models;
 

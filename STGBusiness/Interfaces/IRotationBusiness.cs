@@ -1,6 +1,6 @@
 ﻿using STG.Domain.Models;
 
-namespace STG.Business.Logic.Interfaces
+namespace STG.Business.Interfaces
 {
     public interface IRotationBusiness
     {

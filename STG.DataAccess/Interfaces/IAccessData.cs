@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace STG.DataAccess.AccessObjects.Interfaces
+namespace STG.DataAccess.Interfaces
 {
     public interface IAccessData
     {
