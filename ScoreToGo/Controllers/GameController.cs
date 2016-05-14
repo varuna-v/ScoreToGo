@@ -1,6 +1,7 @@
-﻿using ScoreToGo.Mappers.Interfaces;
-using ScoreToGo.ViewModels;
+﻿using ScoreToGo.ViewModels;
 using STG.Business.Logic.Interfaces;
+using STG.Domain.Mappers;
+using STG.Domain.Models;
 using System.Web.Mvc;
 
 namespace ScoreToGo.Controllers
@@ -9,9 +10,9 @@ namespace ScoreToGo.Controllers
     {
         private readonly IGamePlayBusiness _business;
 
-        private readonly IGamePlayModelMapper _mapper;
+        private readonly IMapper _mapper;
 
-        public GameController(IGamePlayBusiness business, IGamePlayModelMapper mapper)
+        public GameController(IGamePlayBusiness business, IMapper mapper)
         {
             _business = business;
             _mapper = mapper;
@@ -21,8 +22,8 @@ namespace ScoreToGo.Controllers
         {
             var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
             var firstServe = TestDataProvider.GetRandom(0, 1);
-            var Game = _business.StartGame(3, teamRotations, firstServe);
-            var gameModel = _mapper.Map(Game.GamePlay);
+            var game = _business.StartGame(3, teamRotations, firstServe);
+            var gameModel = _mapper.Map<GamePlay, GamePlayModel>(game.GamePlay);
             TempData["GameModel"] = gameModel;
             TempData["ThisPointsServer"] = firstServe;
             return View(gameModel);
@@ -33,14 +34,14 @@ namespace ScoreToGo.Controllers
         {
             var gameModel = (GamePlayModel)TempData["GameModel"];
             var thisPointsServer = (int)TempData["ThisPointsServer"];
-            var Game = _mapper.Map(gameModel);
-            var addPointResult = _business.AddPoint(Game, pointWinner, thisPointsServer);
+            var game = _mapper.Map<GamePlayModel, GamePlay>(gameModel);
+            var addPointResult = _business.AddPoint(game, pointWinner, thisPointsServer);
             var nextServer = pointWinner;
 
             GamePlayModel updatedGameModel;
             if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfGame)
             {
-                updatedGameModel = _mapper.Map(addPointResult.Game);
+                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(addPointResult.Game);
                 return View("GameOver", updatedGameModel);
             }
             else if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfSet)
@@ -48,17 +49,17 @@ namespace ScoreToGo.Controllers
                 var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = addPointResult.NextServer.Value;
                 var updatedGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
-                updatedGameModel = _mapper.Map(updatedGame);
+                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(updatedGame);
             }
             else if (addPointResult.ResultStatus == STG.Business.DomainModels.PointResultStatus.EndOfSetNextDeciding)
             {
                 var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = TestDataProvider.GetRandom(0, 1);
                 var updatedGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
-                updatedGameModel = _mapper.Map(updatedGame);
+                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(updatedGame);
             }
             else
-                updatedGameModel = _mapper.Map(addPointResult.Game);
+                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(addPointResult.Game);
             TempData["GameModel"] = updatedGameModel;
             TempData["ThisPointsServer"] = nextServer;
             return View(updatedGameModel);

@@ -1,14 +1,10 @@
 ﻿using Autofac;
 using ScoreToGo.Controllers;
-using ScoreToGo.Mappers;
-using ScoreToGo.Mappers.Interfaces;
-using STG.Business.DomainModels;
 using STG.Business.Logic;
 using STG.Business.Logic.Interfaces;
 using STG.DataAccess.AccessObjects.Interfaces;
 using STG.DataAccess.AccessObjects.Raven;
 using STG.Domain.Mappers;
-using STG.Domain.Models;
 using System;
 
 namespace ScoreToGo
@@ -44,10 +40,6 @@ namespace ScoreToGo
             _builder.RegisterType<TeamBusiness>().As<ITeamBusiness>();
             _builder.RegisterType<GamePlayBusiness>().As<IGamePlayBusiness>();
             _builder.RegisterType<GameBusiness>().As<IGameBusiness>();
-
-            //Mappers Controller - Business
-            _builder.RegisterType<RotationModelMapper>().As<IRotationModelMapper>();
-            _builder.RegisterType<GamePlayModelMapper>().As<IGamePlayModelMapper>();
 
             //Controllers
             _builder.RegisterType<HomeController>();

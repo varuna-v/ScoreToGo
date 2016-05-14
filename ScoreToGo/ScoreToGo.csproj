@@ -172,10 +172,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InversionOfControl.cs" />
-    <Compile Include="Mappers\GamePlayModelMapper.cs" />
-    <Compile Include="Mappers\Interfaces\IGamePlayModelMapper.cs" />
-    <Compile Include="Mappers\Interfaces\IRotationModelMapper.cs" />
-    <Compile Include="Mappers\RotationModelMapper.cs" />
     <Compile Include="ViewModels\GameModel.cs" />
     <Compile Include="ViewModels\GamePlayModel.cs" />
     <Compile Include="ViewModels\PlayerModel.cs" />
