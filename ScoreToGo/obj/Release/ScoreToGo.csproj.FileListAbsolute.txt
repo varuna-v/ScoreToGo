@@ -20,7 +20,6 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Microsoft.Owin.Security.Tw
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Newtonsoft.Json.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Owin.dll
-C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STGBusiness.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.Helpers.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.Mvc.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.Optimization.dll
@@ -29,7 +28,6 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.WebPages.Deploy
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.WebPages.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.WebPages.Razor.dll
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\WebGrease.dll
-C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STGBusiness.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Autofac.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.Helpers.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\System.Web.Mvc.xml
@@ -66,3 +64,7 @@ C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.p
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Client.Lightweight.xml
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.pdb
 C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\Raven.Abstractions.xml
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Business.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Domain.dll
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Domain.pdb
+C:\Users\User\Desktop\GitCode\ScoreToGo\ScoreToGo\bin\STG.Business.pdb

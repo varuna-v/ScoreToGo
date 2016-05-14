@@ -44,10 +44,10 @@ namespace ScoreToGo.Controllers
             return View(model);
         }
 
-        private List<TeamModel> GetAvailableTeams()
+        private TeamModel[] GetAvailableTeams()
         {
             var availableTeams = _teamBusiness.GetAllTeams();
-            return _mapper.Map<List<Team>, List<TeamModel>>(availableTeams);
+            return _mapper.Map<List<Team>, List<TeamModel>>(availableTeams).ToArray();
         }
     }
 }
