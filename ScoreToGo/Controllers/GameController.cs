@@ -66,6 +66,18 @@ namespace ScoreToGo.Controllers
             return View(updatedGameModel);
         }
 
-        
+        [HttpPost]
+        public ActionResult Substitute(string substitutionKey, string newPlayerIn)
+        {
+            var gameModel = (GamePlayModel)TempData["GameModel"];
+            var game = _mapper.Map<GamePlayModel, GamePlay>(gameModel);
+            var substitutionInfo = substitutionKey.Split('.'); //!! validation
+            _business.Substitute(game, int.Parse(substitutionInfo[0]), int.Parse(newPlayerIn), int.Parse(substitutionInfo[1]));
+            var updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(game);
+            TempData["GameModel"] = updatedGameModel;
+            TempData["ThisPointsServer"] = (int)TempData["ThisPointsServer"];
+            return View("Index", updatedGameModel);
+        }
+
     }
 }

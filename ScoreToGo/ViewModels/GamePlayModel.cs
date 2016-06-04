@@ -15,6 +15,6 @@
                     _currentSetNumber = SetWins[0] + SetWins[1];
                 return _currentSetNumber;
             }
-        }
+        }        
     }
 }

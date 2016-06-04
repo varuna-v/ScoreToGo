@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STG.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,5 +15,7 @@ namespace ScoreToGo.ViewModels
         public int FirstServer { get; set; }
 
         public int Winner { get; set; }
+
+        public TeamInSetInformation[] Information { get; set; }
     }
 }

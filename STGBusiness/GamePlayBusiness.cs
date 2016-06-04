@@ -68,37 +68,30 @@ namespace STG.Business
                                                                 TeamRotations = teamRotations,
                                                                 Score = new int[2],
                                                                 FirstServer = firstServe,
-                                                                StartedAt = DateTime.Now
+                                                                StartedAt = DateTime.Now,
+                                                                Information = new TeamInSetInformation[2] { new TeamInSetInformation(), new TeamInSetInformation() }
                                                             };
             return game;
         }
 
-        public void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
+        public void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int positionOfPlayerComingOut)
         {
             //!!Validation
             // team in 0, 1
             // team contains shirt coming out
-            // no. of substitutions done
+            // no. of substitutions done for team for set
             // new shirt number isn't already there
             Set currentSet = game.GetCurrentSet();
             int opponentTeam = team == 1 ? 0 : 1; //reapeted logic??
             var substitution = new Substitution
             {
                 OpponentScore = currentSet.Score[opponentTeam],
-                PlayerComingOut = shirtNumberComingOut,
+                PlayerComingOut = currentSet.TeamRotations[team].ShirtNumbers[positionOfPlayerComingOut],
                 PlayerGoingIn = shirtNumberGoingIn,
                 RequestedTeamScore = currentSet.Score[team]
             };
             currentSet.Information[team].Substitutions.Add(substitution);
-
-            for (int count = 0; count < 6; count++)
-            {
-                if (currentSet.TeamRotations[team].ShirtNumbers[count] == shirtNumberComingOut)
-                {
-                    currentSet.TeamRotations[team].ShirtNumbers[count] = shirtNumberGoingIn;
-                    break;
-                }
-            }
+            currentSet.TeamRotations[team].ShirtNumbers[positionOfPlayerComingOut] = shirtNumberGoingIn;
         }
 
         private int GetNewSetsFirstServer(GamePlay game, int highestActivatedSetNumber)
@@ -143,7 +136,7 @@ namespace STG.Business
 
         private void Save(Game game)
         {
-           _gameAccess.Save(game);
+            _gameAccess.Save(game);
         }
 
     }

@@ -5,18 +5,18 @@
 
 <h2>Game</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Game"))
 {
     <div id="gameplayRotation">
         <div class="container-fluid pad-20">
-            <span class="col-lg-2" id="0.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[3] </span>
-            <span class="col-lg-2" id="0.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[2]</span>
-            <span class="col-lg-2" id="0.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[1]</span>
+            <span class="col-lg-2" id="0.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[0] </span>
+            <span class="col-lg-2" id="0.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[5]</span>
+            <span class="col-lg-2" id="0.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[4]</span>
         </div>
         <div class="container-fluid pad-20">
-            <span class="col-lg-2" id="0.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[4]</span>
-            <span class="col-lg-2" id="0.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[5]</span>
-            <span class="col-lg-2" id="0.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[0]</span>
+            <span class="col-lg-2" id="0.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[1]</span>
+            <span class="col-lg-2" id="0.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[2]</span>
+            <span class="col-lg-2" id="0.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[3]</span>
         </div>
         <div class="container-fluid pad-20">
             <button type="submit" name="PointWinner" value="0" class="btn">Team A </button>
@@ -43,13 +43,13 @@
         </div>
     </div>
 }
-<div id="substitutionPanel" class="hidden">
-    @Html.BeginForm("Substitute")
-    {
-        @Html.Hidden("SubstituitionKey", "")
-        <input type="text" id="newPlayerIn" />
-        <input type="button" onclick="substitue()" value="Substitute" />
-    }
+@*//!!inline css*@
+<div id="substitutionPanel" style="display:none">
+    <form class="form-horizontal" method="post">
+        <input type="text" id="substitutionKey" class="hidden" name="substitutionKey" /> @*@Html.Hidden("substitutionKey", "")>*@
+        <input type="text" id="newPlayerIn" name="newPlayerIn" />
+        <button type="submit" value="Substitute" formaction="@Url.Action("Substitute")">Substitute</button>
+    </form>
 </div>
 
 @Html.Partial("PlayerOptionsMenu")

@@ -53,8 +53,8 @@
 $("#gameplayRotation span").openMenu({
     menuSelector: "#playerOptions",
     menuSelected: function (invokedOn, selectedMenu) {
-        var msg = "You selected the menu item '" + selectedMenu.text() +
-            "' on the value '" + invokedOn.text() + "'";
-        alert(msg);
+        //if selectedMenu.text() == "Substitute"
+        $('#substitutionKey').val(invokedOn.attr("id"));
+        $('#substitutionPanel').show();
     }
 });
