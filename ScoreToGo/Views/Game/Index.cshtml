@@ -7,6 +7,16 @@
 
 @using (Html.BeginForm("Index", "Game"))
 {
+    <div class="row">
+        <div class="col-xs-6 text-right">
+            <span class="text-size-10">@Model.SetWins[0]</span>
+            <span class="text-bold text-size-16">@Model.Sets[@Model.CurrentSetNumber].Score[0]</span>
+        </div>
+        <div class="col-xs-6">
+            <span class="text-bold text-size-16">@Model.Sets[@Model.CurrentSetNumber].Score[1]</span>
+            <span class="text-size-10">@Model.SetWins[1]</span>
+        </div>
+    </div>
     <div id="gameplayRotation" class="container-fluid row portrait-hidden text-center">
         <div class="panel panel-default col-xs-6">
             <div class="row pad-20">
@@ -38,26 +48,21 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-xs-6">
-            <button type="submit" name="PointWinner" value="0" class="btn">Team A </button>
-            Points: @Model.Sets[@Model.CurrentSetNumber].Score[0];
-            Sets: @Model.SetWins[0];
+            <button type="submit" name="pointWinner" value="0" class="btn pull-right">Point</button>
         </div>
         <div class="col-xs-6">
-            <button type="submit" name="PointWinner" value="1" class="btn">Team B </button>
-            Points:   @Model.Sets[@Model.CurrentSetNumber].Score[1];
-            Sets: @Model.SetWins[1];
+            <button type="submit" name="pointWinner" value="1" class="btn">Point</button>
         </div>
     </div>
 }
 @*//!!inline css*@
 <div id="substitutionPanel" style="display:none">
-    <form class="form-horizontal" method="post">
+    <form class="form-inline" method="post">
         <input type="text" id="substitutionKey" class="hidden" name="substitutionKey" />
-        <input type="text" id="newPlayerIn" name="newPlayerIn" />
-        <button type="submit" value="Substitute" formaction="@Url.Action("Substitute")">Substitute</button>
+        <input type="text" id="newPlayerIn" name="newPlayerIn" class="form-control" />
+        <button type="submit" value="Substitute" formaction="@Url.Action("Substitute")" class="btn pull-right">Substitute</button>
     </form>
 </div>
 
