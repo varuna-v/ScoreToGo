@@ -7,36 +7,45 @@
 
 @using (Html.BeginForm("Index", "Game"))
 {
-    <div id="gameplayRotation">
-        <div class="container-fluid pad-20">
-            <span class="col-lg-2" id="0.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[0] </span>
-            <span class="col-lg-2" id="0.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[5]</span>
-            <span class="col-lg-2" id="0.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[4]</span>
+    <div id="gameplayRotation" class="container-fluid row portrait-hidden text-center">
+        <div class="panel panel-default col-xs-6">
+            <div class="row pad-20">
+                <span class="col-xs-6" id="0.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[4]</span>
+                <span class="col-xs-6" id="0.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[3]</span>
+            </div>
+            <div class="row pad-20">
+                <span class="col-xs-6" id="0.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[5]</span>
+                <span class="col-xs-6" id="0.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[2]</span>
+            </div>
+            <div class="row pad-20">
+                <span class="col-xs-6" id="0.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[0]</span>
+                <span class="col-xs-6" id="0.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[1]</span>
+            </div>
         </div>
-        <div class="container-fluid pad-20">
-            <span class="col-lg-2" id="0.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[1]</span>
-            <span class="col-lg-2" id="0.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[2]</span>
-            <span class="col-lg-2" id="0.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[3]</span>
+
+        <div class="panel panel-default col-xs-6">
+            <div class="row pad-20">
+                <span class="col-xs-6" id="1.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[1]</span>
+                <span class="col-xs-6" id="1.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[0]</span>
+            </div>
+            <div class="row pad-20">
+                <span class="col-xs-6" id="1.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[2]</span>
+                <span class="col-xs-6" id="1.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[5]</span>
+            </div>
+            <div class="row pad-20">
+                <span class="col-xs-6" id="1.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[3]</span>
+                <span class="col-xs-6" id="1.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[4]</span>
+            </div>
         </div>
-        <div class="container-fluid pad-20">
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
             <button type="submit" name="PointWinner" value="0" class="btn">Team A </button>
             Points: @Model.Sets[@Model.CurrentSetNumber].Score[0];
             Sets: @Model.SetWins[0];
         </div>
-
-        <hr class="pad-0 mar-0" />
-
-        <div class="container-fluid pad-20">
-            <span class="col-lg-2" id="1.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[3]</span>
-            <span class="col-lg-2" id="1.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[2]</span>
-            <span class="col-lg-2" id="1.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[1]</span>
-        </div>
-        <div class="container-fluid pad-20">
-            <span class="col-lg-2" id="1.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[4]</span>
-            <span class="col-lg-2" id="1.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[5]</span>
-            <span class="col-lg-2" id="1.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[0]</span>
-        </div>
-        <div class="container-fluid pad-20">
+        <div class="col-xs-6">
             <button type="submit" name="PointWinner" value="1" class="btn">Team B </button>
             Points:   @Model.Sets[@Model.CurrentSetNumber].Score[1];
             Sets: @Model.SetWins[1];
@@ -46,7 +55,7 @@
 @*//!!inline css*@
 <div id="substitutionPanel" style="display:none">
     <form class="form-horizontal" method="post">
-        <input type="text" id="substitutionKey" class="hidden" name="substitutionKey" /> @*@Html.Hidden("substitutionKey", "")>*@
+        <input type="text" id="substitutionKey" class="hidden" name="substitutionKey" />
         <input type="text" id="newPlayerIn" name="newPlayerIn" />
         <button type="submit" value="Substitute" formaction="@Url.Action("Substitute")">Substitute</button>
     </form>
