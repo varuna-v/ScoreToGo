@@ -28,13 +28,26 @@ namespace ScoreToGo.ViewModels
 
         public TeamModel[] AvailableTeams { get; set; }
 
-        public IEnumerable<SelectListItem> AvailableTeamList
+        public IEnumerable<SelectListItem> AvailableTeamAList
         {
             get
             {
                 List<TeamModel> teams = new List<TeamModel>() { new TeamModel { Code = string.Empty, Name = "Select" } };
                 if (AvailableTeams != null) { teams.AddRange(AvailableTeams); }
-                return new SelectList(teams, "Code", "Name", new { Code = string.Empty, Name = "Select" });
+                var result = new SelectList(teams, "Code", "Name", new { Code = string.Empty, Name = "Select" });
+                return result;
+            }
+        }
+
+        public IEnumerable<SelectListItem> AvailableTeamBList
+        {
+            //!!set selected!!
+            get
+            {
+                List<TeamModel> teams = new List<TeamModel>() { new TeamModel { Code = string.Empty, Name = "Select" } };
+                if (AvailableTeams != null) { teams.AddRange(AvailableTeams); }
+                var result = new SelectList(teams, "Code", "Name", new { Code = string.Empty, Name = "Select" });
+                return result;
             }
         }
 

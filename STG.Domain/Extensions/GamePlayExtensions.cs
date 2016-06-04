@@ -43,5 +43,10 @@ namespace STG.Domain.Extensions
             }
             return -1;
         }
+
+        public static Set GetCurrentSet(this GamePlay gamePlay)
+        {
+            return gamePlay.Sets[gamePlay.GetHighestActivatedSetNumber()];
+        }
     }
 }

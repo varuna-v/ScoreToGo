@@ -29,6 +29,7 @@ namespace ScoreToGo.Controllers
             return View(gameModel);
         }
 
+        //!!change to ajax call instead of post back?
         [HttpPost]
         public ActionResult Index(int pointWinner)
         {
@@ -64,5 +65,7 @@ namespace ScoreToGo.Controllers
             TempData["ThisPointsServer"] = nextServer;
             return View(updatedGameModel);
         }
+
+        
     }
 }

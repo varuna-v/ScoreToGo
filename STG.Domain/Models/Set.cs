@@ -11,6 +11,7 @@ namespace STG.Domain.Models
         public DateTime StartedAt { get; set; }
         public DateTime EndedAt { get; set; }
         public TeamRotation[] TeamRotations { get; set; }
+        public TeamInSetInformation[] Information { get; set; }
         //rotation history
         //substitutions
         //time outs

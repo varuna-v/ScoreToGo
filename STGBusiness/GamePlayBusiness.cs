@@ -4,9 +4,11 @@ using STG.Domain.Mappers;
 using STG.Domain.Models;
 using System;
 using STG.Domain.Extensions;
+using System.Linq;
 
 namespace STG.Business
 {
+    //todo take GamePlay in by reference so don't need to return from methods?
     public class GamePlayBusiness : IGamePlayBusiness
     {
         private readonly IGameAccess _gameAccess;
@@ -71,6 +73,34 @@ namespace STG.Business
             return game;
         }
 
+        public void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
+        {
+            //!!Validation
+            // team in 0, 1
+            // team contains shirt coming out
+            // no. of substitutions done
+            // new shirt number isn't already there
+            Set currentSet = game.GetCurrentSet();
+            int opponentTeam = team == 1 ? 0 : 1; //reapeted logic??
+            var substitution = new Substitution
+            {
+                OpponentScore = currentSet.Score[opponentTeam],
+                PlayerComingOut = shirtNumberComingOut,
+                PlayerGoingIn = shirtNumberGoingIn,
+                RequestedTeamScore = currentSet.Score[team]
+            };
+            currentSet.Information[team].Substitutions.Add(substitution);
+
+            for (int count = 0; count < 6; count++)
+            {
+                if (currentSet.TeamRotations[team].ShirtNumbers[count] == shirtNumberComingOut)
+                {
+                    currentSet.TeamRotations[team].ShirtNumbers[count] = shirtNumberGoingIn;
+                    break;
+                }
+            }
+        }
+
         private int GetNewSetsFirstServer(GamePlay game, int highestActivatedSetNumber)
         {
             return game.Sets[highestActivatedSetNumber].FirstServer == 0 ? 1 : 0;
@@ -115,5 +145,6 @@ namespace STG.Business
         {
            _gameAccess.Save(game);
         }
+
     }
 }

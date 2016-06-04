@@ -52,7 +52,9 @@
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Rotation.cs" />
     <Compile Include="Models\Set.cs" />
+    <Compile Include="Models\Substitution.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamInSetInformation.cs" />
     <Compile Include="Models\TeamRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

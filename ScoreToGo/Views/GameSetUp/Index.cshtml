@@ -43,7 +43,7 @@
                         @if (string.IsNullOrEmpty(Model.TeamACode))
                         {
                             <span class="col-md-10 pad-10">
-                                @Html.DropDownListFor(m => m.TeamACode, Model.AvailableTeamList, new { @onchange = "submitform();", @class = "form-control" })
+                                @Html.DropDownListFor(m => m.TeamACode, Model.AvailableTeamAList, new { @onchange = "submitform();", @class = "form-control" })
                             </span>
                         }
                         else
@@ -71,7 +71,7 @@
                         @if (string.IsNullOrEmpty(Model.TeamBCode))
                         {
                             <span class="col-md-10 pad-10">
-                                @Html.DropDownListFor(m => m.TeamBCode, Model.AvailableTeamList, new { @onchange = "submitform();", @class = "form-control" })
+                                @Html.DropDownListFor(m => m.TeamBCode, Model.AvailableTeamBList, new { @onchange = "submitform();", @class = "form-control" })
                             </span>
                         }
                         else

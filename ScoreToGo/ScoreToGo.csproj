@@ -207,6 +207,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\menus.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -237,6 +238,7 @@
     <Content Include="Views\Shared\EditorTemplates\PlayerModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TeamModel.cshtml" />
     <Content Include="Views\GameSetUp\Index.cshtml" />
+    <Content Include="Views\Shared\PlayerOptionsMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

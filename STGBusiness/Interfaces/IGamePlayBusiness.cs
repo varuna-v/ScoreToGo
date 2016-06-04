@@ -8,6 +8,8 @@ namespace STG.Business.Interfaces
 
         AddPointResult AddPoint(GamePlay game, int pointWinner, int thisPointsServer);
 
-        GamePlay StartNewSet(GamePlay game, TeamRotation[] teamRotations, int firstServe);               
+        GamePlay StartNewSet(GamePlay game, TeamRotation[] teamRotations, int firstServe);
+
+        void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut);
     }
 }
