@@ -1,10 +1,8 @@
 ﻿using STG.Business.Interfaces;
 using STG.DataAccess.Interfaces;
-using STG.Domain.Mappers;
 using STG.Domain.Models;
 using System;
 using STG.Domain.Extensions;
-using System.Linq;
 
 namespace STG.Business
 {

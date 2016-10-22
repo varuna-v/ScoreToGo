@@ -1,6 +1,4 @@
-﻿using ScoreToGo.ViewModels;
-using STG.Business.Interfaces;
-using STG.Domain.Mappers;
+﻿using STG.Business.Interfaces;
 using STG.Domain.Models;
 using System.Web.Mvc;
 
@@ -10,73 +8,65 @@ namespace ScoreToGo.Controllers
     {
         private readonly IGamePlayBusiness _business;
 
-        private readonly IMapper _mapper;
-
-        public GameController(IGamePlayBusiness business, IMapper mapper)
+        public GameController(IGamePlayBusiness business)
         {
             _business = business;
-            _mapper = mapper;
         }
 
         public ActionResult Index()
         {
-            var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
-            var firstServe = TestDataProvider.GetRandom(0, 1);
-            var game = _business.StartGame(3, teamRotations, firstServe);
-            var gameModel = _mapper.Map<GamePlay, GamePlayModel>(game.GamePlay);
-            TempData["GameModel"] = gameModel;
-            TempData["ThisPointsServer"] = firstServe;
-            return View(gameModel);
+            TeamRotation[] teamRotations = TestDataProvider.GetRandomTeamRotationModels();
+            int firstServe = TestDataProvider.GetRandom(0, 1);
+            Game game = _business.StartGame(3, teamRotations, firstServe);
+            game.GamePlay.CurrentServer = firstServe;
+            return View(game.GamePlay);
         }
 
-        //!!change to ajax call instead of post back?
         [HttpPost]
-        public ActionResult Index(int pointWinner)
+        public JsonResult AddPoint(GamePlay gameModel, int pointWinner)
         {
-            var gameModel = (GamePlayModel)TempData["GameModel"];
-            var thisPointsServer = (int)TempData["ThisPointsServer"];
-            var game = _mapper.Map<GamePlayModel, GamePlay>(gameModel);
-            var addPointResult = _business.AddPoint(game, pointWinner, thisPointsServer);
-            var nextServer = pointWinner;
+            int thisPointsServer = gameModel.CurrentServer;
+            AddPointResult addPointResult = _business.AddPoint(gameModel, pointWinner, thisPointsServer);
+            int nextServer = pointWinner;
 
-            GamePlayModel updatedGameModel;
+            GamePlay updatedGameModel;
             if (addPointResult.ResultStatus == PointResultStatus.EndOfGame)
             {
-                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(addPointResult.Game);
-                return View("GameOver", updatedGameModel);
+                addPointResult.Game.GameOver = true;
+                return Json(addPointResult.Game);
             }
             else if (addPointResult.ResultStatus == PointResultStatus.EndOfSet)
             {
-                var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
+                TeamRotation[] teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = addPointResult.NextServer.Value;
-                var updatedGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
-                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(updatedGame);
+                updatedGameModel = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
             }
             else if (addPointResult.ResultStatus == PointResultStatus.EndOfSetNextDeciding)
             {
-                var teamRotations = TestDataProvider.GetRandomTeamRotationModels();
+                TeamRotation[] teamRotations = TestDataProvider.GetRandomTeamRotationModels();
                 nextServer = TestDataProvider.GetRandom(0, 1);
-                var updatedGame = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
-                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(updatedGame);
+                updatedGameModel = _business.StartNewSet(addPointResult.Game, teamRotations, nextServer);
             }
             else
-                updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(addPointResult.Game);
-            TempData["GameModel"] = updatedGameModel;
-            TempData["ThisPointsServer"] = nextServer;
-            return View(updatedGameModel);
+                updatedGameModel = addPointResult.Game;
+            updatedGameModel.CurrentServer = nextServer;
+            return Json(updatedGameModel);
         }
 
         [HttpPost]
         public ActionResult Substitute(string substitutionKey, string newPlayerIn)
         {
-            var gameModel = (GamePlayModel)TempData["GameModel"];
-            var game = _mapper.Map<GamePlayModel, GamePlay>(gameModel);
-            var substitutionInfo = substitutionKey.Split('.'); //!! validation
-            _business.Substitute(game, int.Parse(substitutionInfo[0]), int.Parse(newPlayerIn), int.Parse(substitutionInfo[1]));
-            var updatedGameModel = _mapper.Map<GamePlay, GamePlayModel>(game);
-            TempData["GameModel"] = updatedGameModel;
+            GamePlay gameModel = (GamePlay)TempData["GameModel"];
+            string[] substitutionInfo = substitutionKey.Split('.'); //!! validation
+            _business.Substitute(gameModel, int.Parse(substitutionInfo[0]), int.Parse(newPlayerIn), int.Parse(substitutionInfo[1]));
+            TempData["GameModel"] = gameModel;
             TempData["ThisPointsServer"] = (int)TempData["ThisPointsServer"];
-            return View("Index", updatedGameModel);
+            return View("Index", gameModel);
+        }
+
+        public ActionResult GameOver()
+        {
+            return View(new ViewModels.GameModel { GamePlay = new GamePlay { SetWins = new int[] { 1, 2 } } }); //!! hardcoded results
         }
 
     }

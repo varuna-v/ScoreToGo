@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="appMain">
+<head>
+    <title>Score To Go</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body data-ng-controller="homePageViewModel">
+    <!--//info instantiating the view model class - its scope is anything in this html node-->
+    <h2>{{ headingCaption }}</h2>
+    <br />
+    <label for="firstServer">First Server:</label>
+    <label id="firstServer">{{ theSet.FirstServer }}</label>
+    <br />
+    
+    <label for="winner">Winner: </label>
+    <label id="winner">{{ theSet.Winner }}</label>
+    <br />
+
+    <a href="#" ng-click="showSet(theSet)">Show</a>
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/App.js"></script>
+</body>
+</html>

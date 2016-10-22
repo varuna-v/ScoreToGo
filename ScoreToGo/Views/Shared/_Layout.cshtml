@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body data-ng-app="main">
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -37,6 +37,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/native")
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/App.js"></script> @*//!! move to bundle*@
     @RenderSection("scripts", required: false)
+    @*<script type="text/javascript">
+        MyApp.rootPath = '@Url.Content("~")';
+        @RenderSection("jsCode", required: false)
+    </script>*@
 </body>
 </html>

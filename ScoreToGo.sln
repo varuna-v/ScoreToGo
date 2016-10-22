@@ -15,6 +15,32 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STG.Importer", "STG.Importe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STG.Domain", "STG.Domain\STG.Domain.csproj", "{88FA9D0B-B687-4CC9-97E1-08258A5948A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STG.Api", "STG.Api\STG.Api.csproj", "{BE9D65C5-031D-4C6B-A25A-54F186865804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STG.Web", "STG.Web\STG.Web.csproj", "{DA8A7F13-F366-4990-AC41-218E6652BD43}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "scoretogo.web", "scoretogo.web\", "{5CD1CAC6-EC3F-41AA-8902-0ECFD13D3D15}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57677"
+		Debug.AspNetCompiler.PhysicalPath = "scoretogo.web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57677\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57677"
+		Release.AspNetCompiler.PhysicalPath = "scoretogo.web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57677\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57677"
+		SlnRelativePath = "scoretogo.web\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +71,18 @@ Global
 		{88FA9D0B-B687-4CC9-97E1-08258A5948A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88FA9D0B-B687-4CC9-97E1-08258A5948A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88FA9D0B-B687-4CC9-97E1-08258A5948A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE9D65C5-031D-4C6B-A25A-54F186865804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9D65C5-031D-4C6B-A25A-54F186865804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9D65C5-031D-4C6B-A25A-54F186865804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9D65C5-031D-4C6B-A25A-54F186865804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8A7F13-F366-4990-AC41-218E6652BD43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8A7F13-F366-4990-AC41-218E6652BD43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8A7F13-F366-4990-AC41-218E6652BD43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8A7F13-F366-4990-AC41-218E6652BD43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD1CAC6-EC3F-41AA-8902-0ECFD13D3D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD1CAC6-EC3F-41AA-8902-0ECFD13D3D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD1CAC6-EC3F-41AA-8902-0ECFD13D3D15}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD1CAC6-EC3F-41AA-8902-0ECFD13D3D15}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

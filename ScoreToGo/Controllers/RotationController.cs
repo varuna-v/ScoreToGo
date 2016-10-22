@@ -20,13 +20,13 @@ namespace ScoreToGo.Controllers
 
         public ActionResult Index()
         {
-            var initialRotationModel = new RotationModel();
-            initialRotationModel.TeamRotations = new TeamRotationModel[2];
-            initialRotationModel.TeamRotations[0] = new TeamRotationModel()
+            var initialRotationModel = new Rotation();
+            initialRotationModel.TeamRotations = new TeamRotation[2];
+            initialRotationModel.TeamRotations[0] = new TeamRotation()
             {
                 ShirtNumbers = new int[] { 5, 12, 6, 7, 10, 1 }
             };
-            initialRotationModel.TeamRotations[1] = new TeamRotationModel()
+            initialRotationModel.TeamRotations[1] = new TeamRotation()
             {
                 ShirtNumbers = new int[] { 13, 9, 2, 10, 12, 4 }
             };
@@ -34,12 +34,10 @@ namespace ScoreToGo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(RotationModel model, int pointWinner)
+        public ActionResult Index(Rotation model, int pointWinner)
         {
             ModelState.Clear();
-            var domainModel = _mapper.Map<RotationModel, Rotation>(model);
-            var rotatedDomainModel = _business.Rotate(domainModel, pointWinner);
-            var rotatedModel = _mapper.Map<Rotation, RotationModel>(rotatedDomainModel);
+            var rotatedModel = _business.Rotate(model, pointWinner);
             return View(rotatedModel);
         }
     }
