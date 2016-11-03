@@ -1,4 +1,5 @@
-﻿using STG.Business.Interfaces;
+﻿using ScoreToGo.ViewModels;
+using STG.Business.Interfaces;
 using STG.Domain.Models;
 using System.Web.Mvc;
 
@@ -19,14 +20,14 @@ namespace ScoreToGo.Controllers
             int firstServe = TestDataProvider.GetRandom(0, 1);
             Game game = _business.StartGame(3, teamRotations, firstServe);
             game.GamePlay.CurrentServer = firstServe;
-            return View(game.GamePlay);
+            return View(new GamePlayViewModel(game.GamePlay));
         }
 
         [HttpPost]
-        public JsonResult AddPoint(GamePlay gameModel, int pointWinner)
+        public JsonResult AddPoint(GamePlayViewModel gameModel, int pointWinner)
         {
-            int thisPointsServer = gameModel.CurrentServer;
-            AddPointResult addPointResult = _business.AddPoint(gameModel, pointWinner, thisPointsServer);
+            int thisPointsServer = gameModel.GamePlay.CurrentServer;
+            AddPointResult addPointResult = _business.AddPoint(gameModel.GamePlay, pointWinner, thisPointsServer);
             int nextServer = pointWinner;
 
             GamePlay updatedGameModel;
@@ -50,7 +51,7 @@ namespace ScoreToGo.Controllers
             else
                 updatedGameModel = addPointResult.Game;
             updatedGameModel.CurrentServer = nextServer;
-            return Json(updatedGameModel);
+            return Json(new GamePlayViewModel(updatedGameModel));
         }
 
         [HttpPost]
@@ -66,7 +67,7 @@ namespace ScoreToGo.Controllers
 
         public ActionResult GameOver()
         {
-            return View(new ViewModels.GameModel { GamePlay = new GamePlay { SetWins = new int[] { 1, 2 } } }); //!! hardcoded results
+            return View(new ViewModels.GameModel { GamePlay = new GamePlayViewModel(new GamePlay { SetWins = new int[] { 1, 2 } }) }); //!! hardcoded results
         }
 
     }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Linq;
-using STG.Domain.Models;
 
 namespace ScoreToGo.ViewModels
 {
@@ -22,7 +21,7 @@ namespace ScoreToGo.ViewModels
         [Display(Name = "Start Time")]
         public DateTime StartedAt { get; set; }
 
-        public GamePlay GamePlay { get; set; }
+        public GamePlayViewModel GamePlay { get; set; }
 
         //Validation - must be odd
         public int BestOfNumberOfSets { get; set; }

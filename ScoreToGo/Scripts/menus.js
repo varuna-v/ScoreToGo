@@ -50,10 +50,11 @@
     };
 })(jQuery, window);
 
-$("#gameplayRotation span").openMenu({
+$(".player").openMenu({
     menuSelector: "#playerOptions",
     menuSelected: function (invokedOn, selectedMenu) {
         //if selectedMenu.text() == "Substitute"
+        console.log("hi");
         $('#substitutionKey').val(invokedOn.attr("id"));
         $('#substitutionPanel').show();
     }

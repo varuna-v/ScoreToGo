@@ -14,5 +14,8 @@
                 $window.location.href = "Game/GameOver";
             }
         })
+        .error(function (error, status){
+            $scope.data.error = { message: error, status: status};
+            console.log($scope.data.error.status); })
     }
 });

@@ -21,3 +21,27 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.columns-2 {
+    columns: 2;
+}
+
+/*//!!move to animation.css*/
+.player {    
+    -webkit-transition: 1s linear all;
+    transition: 1s linear all;
+}
+
+.player.ng-move,
+.player.ng-enter,
+.player.ng-leave {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    opacity:0;
+}
+
+.player.ng-leave.ng-leave-active,
+.player.ng-move.ng-move-active,
+.player.ng-enter.ng-enter-active {
+    opacity:1;
+}
