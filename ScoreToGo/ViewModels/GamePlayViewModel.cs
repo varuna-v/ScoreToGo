@@ -7,8 +7,6 @@ namespace ScoreToGo.ViewModels
         {
 
         }
-        private static int a = 1510;
-        private static int b = 1993;
         public GamePlayViewModel(GamePlay gamePlay)
         {
             GamePlay = gamePlay;
@@ -42,9 +40,6 @@ namespace ScoreToGo.ViewModels
                     }
                 }
             };
-            int c = a;
-            a = b;
-            b = c;
         }
 
         public GamePlay GamePlay { get; set; }

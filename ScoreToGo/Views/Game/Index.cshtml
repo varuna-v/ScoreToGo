@@ -27,7 +27,19 @@
         <div class="panel panel-default col-xs-6">
             <div class="row pad-20 columns-2">
                 <div class="player" ng-repeat="player in gamePlay.RotationForView[0].ShirtNumbers">
-                    {{ player }}
+
+                    <md-menu>
+                        <!-- Trigger element is a md-button with an icon -->
+                        <md-button ng-click="$mdOpenMenu($event)">
+                            {{player}}
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item><md-button ng-click="openSubstitutionPanel(0, player)">Sustitute</md-button></md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+
+
+
                 </div>
             </div>
         </div>
@@ -35,7 +47,7 @@
         <div class="panel panel-default col-xs-6">
             <div class="row pad-20 columns-2">
                 <div class="player" ng-repeat="player in gamePlay.RotationForView[1].ShirtNumbers">
-                    {{ player }}
+                    {{player}}
                 </div>
             </div>
         </div>
@@ -49,17 +61,16 @@
             <button type="submit" class="btn" ng-click="addPoint(1)">Point</button>
         </div>
     </div>
-</div>
-<div id="substitutionPanel" style="display:none">
-    @*//!!inline css*@
-    <form class="form-inline" method="post">
-        <input type="text" id="substitutionKey" class="hidden" name="substitutionKey" />
-        <input type="text" id="newPlayerIn" name="newPlayerIn" class="form-control" />
-        <button type="submit" value="Substitute" formaction="@Url.Action("Substitute")" class="btn pull-right">Substitute</button>
-    </form>
+    <div ng-show="showSubstitutionPanel">
+        <label>Substitution</label>
+        <br />
+        <label for="substitutionTeam">Team:</label>  <input type="text" id="substitutionTeam" value="{{substitutionTeam}}" disabled class="form-control" />
+        <label for="positionOfPlayerComingOut">Player Coming Out: : </label> <input type="text" id="shirtNumberComingOut" value="{{shirtNumberComingOut}}" disabled class="form-control" />
+        <label for="shirtNumberGoingIn">Player Going In</label><input type="text" id="shirtNumberGoingIn" value="{{shirtNumberGoingIn}}" ng-model="shirtNumberGoingIn" class="form-control" />
+        <button type="submit" class="btn pull-right" ng-click="substitute()">Substitute</button>
+    </div>
 </div>
 
-@Html.Partial("PlayerOptionsMenu")
 
 
 

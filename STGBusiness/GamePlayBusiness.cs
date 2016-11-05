@@ -72,7 +72,7 @@ namespace STG.Business
             return game;
         }
 
-        public void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int positionOfPlayerComingOut)
+        public void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
         {
             //!!Validation
             // team in 0, 1
@@ -81,6 +81,7 @@ namespace STG.Business
             // new shirt number isn't already there
             Set currentSet = game.GetCurrentSet();
             int opponentTeam = team == 1 ? 0 : 1; //reapeted logic??
+            int positionOfPlayerComingOut = Array.IndexOf(currentSet.TeamRotations[team].ShirtNumbers, shirtNumberComingOut);
             var substitution = new Substitution
             {
                 OpponentScore = currentSet.Score[opponentTeam],

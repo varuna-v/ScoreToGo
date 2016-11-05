@@ -1,2 +1,2 @@
-﻿var appMainModule = angular.module('main', ['ngAnimate']);
+﻿var appMainModule = angular.module('main', ['ngMaterial', 'ngAnimate', 'ngAria']);
 

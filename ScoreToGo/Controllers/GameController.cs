@@ -55,14 +55,10 @@ namespace ScoreToGo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Substitute(string substitutionKey, string newPlayerIn)
+        public JsonResult Substitute(GamePlayViewModel gameModel, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
         {
-            GamePlay gameModel = (GamePlay)TempData["GameModel"];
-            string[] substitutionInfo = substitutionKey.Split('.'); //!! validation
-            _business.Substitute(gameModel, int.Parse(substitutionInfo[0]), int.Parse(newPlayerIn), int.Parse(substitutionInfo[1]));
-            TempData["GameModel"] = gameModel;
-            TempData["ThisPointsServer"] = (int)TempData["ThisPointsServer"];
-            return View("Index", gameModel);
+            _business.Substitute(gameModel.GamePlay, team, shirtNumberGoingIn, shirtNumberComingOut);
+            return Json(new GamePlayViewModel(gameModel.GamePlay));
         }
 
         public ActionResult GameOver()

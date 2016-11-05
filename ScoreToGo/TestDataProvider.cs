@@ -1,5 +1,6 @@
 ﻿using System;
 using STG.Domain.Models;
+using System.Linq;
 
 namespace ScoreToGo
 {
@@ -21,7 +22,12 @@ namespace ScoreToGo
             var shirtNumbers = new int[6];
             for (int i = 0; i < 6; i++)
             {
-                shirtNumbers[i] = GetRandom(1, 50, even);
+                int n;
+                do
+                {
+                    n = GetRandom(1, 50, even);
+                } while (shirtNumbers.ToList().Contains(n));
+                shirtNumbers[i] = n;
             }
             return shirtNumbers;
         }

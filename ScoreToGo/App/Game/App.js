@@ -15,7 +15,32 @@
             }
         })
         .error(function (error, status){
-            $scope.data.error = { message: error, status: status};
+            $scope.data.error = { message: error, status: status}; //!! proper error logging for JS
             console.log($scope.data.error.status); })
+    }
+
+    $scope.showSubstitutionPanel = false;
+    $scope.substitutionTeam = -1;
+    $scope.shirtNumberComingOut = 0;
+    $scope.shirtNumberGoingIn = 0;
+
+    $scope.openSubstitutionPanel = function (team, shirtNumberComingOut) {
+        $scope.showSubstitutionPanel = true;
+        $scope.substitutionTeam = team;
+        $scope.shirtNumberComingOut = shirtNumberComingOut;
+    }
+    $scope.substitute = function () {
+        var Indata = { gameModel: $scope.gamePlay, team: $scope.substitutionTeam, shirtNumberGoingIn: $scope.shirtNumberGoingIn, shirtNumberComingOut: $scope.shirtNumberComingOut }
+        $http.post("/Game/Substitute", Indata).success(function (data) {
+            $scope.gamePlay = data;
+            $scope.showSubstitutionPanel = false;
+            $scope.substitutionTeam = -1;
+            $scope.shirtNumberComingOut = 0;
+            $scope.shirtNumberGoingIn = 0;
+        })
+        .error(function (error, status) {
+            $scope.data.error = { message: error, status: status };
+            console.log($scope.data.error.status);
+        })
     }
 });
