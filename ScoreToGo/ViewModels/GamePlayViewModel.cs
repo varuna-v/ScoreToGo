@@ -5,8 +5,8 @@ namespace ScoreToGo.ViewModels
     {
         public GamePlayViewModel()
         {
-
         }
+
         public GamePlayViewModel(GamePlay gamePlay)
         {
             GamePlay = gamePlay;

@@ -69,12 +69,23 @@
             <button type="submit" class="btn pull-right" ng-disabled="!teamBHasAvailableTimeOuts" ng-click="startTimeOut(1)">Time Out</button>
         </div>
     </div>
-    <div ng-show="showSubstitutionPanel">
+    <div ng-show="showSubstitutionPanel" class="mar-20">
         <label>Substitution</label>
         <br />
-        <label for="substitutionTeam">Team:</label>  <input type="text" id="substitutionTeam" value="{{substitutionTeam}}" disabled class="form-control" />
-        <label for="positionOfPlayerComingOut">Player Coming Out: : </label> <input type="text" id="shirtNumberComingOut" value="{{shirtNumberComingOut}}" disabled class="form-control" />
-        <label for="shirtNumberGoingIn">Player Going In</label><input type="text" id="shirtNumberGoingIn" value="{{shirtNumberGoingIn}}" ng-model="shirtNumberGoingIn" class="form-control" />
-        <button type="submit" class="btn" ng-click="substitute()">Substitute</button>
+        <span class="row">
+            <label for="substitutionTeam">Team:</label>
+            <input type="text" id="substitutionTeam" value="{{substitutionTeam}}" disabled class="form-control" />
+        </span>
+        <span class="row">
+            <label for="positionOfPlayerComingOut">Player Coming Out:</label>
+            <input type="text" id="shirtNumberComingOut" value="{{shirtNumberComingOut}}" disabled class="form-control" />
+        </span>
+        <span class="row">
+            <label for="shirtNumberGoingIn">Player Going In:</label>
+            <input type="text" id="shirtNumberGoingIn" value="{{shirtNumberGoingIn}}" ng-model="shirtNumberGoingIn" class="form-control" />
+        </span>
+        <span class="row">
+            <button type="submit" class="btn" ng-click="substitute()">Substitute</button>
+        </span>
     </div>
 </div>
