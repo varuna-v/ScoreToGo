@@ -1,17 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace STG.Domain.Models
+﻿namespace STG.Domain.Models
 {
     public class TeamInSetInformation
     {
-        //public TeamInSetInformation()
-        //{
-        //    Substitutions = new List<Substitution>();
-        //}
-
         public Substitution[] Substitutions { get; set; }
+        public TimeOut[] TimeOuts { get; set; }
+        public int NumberOfTimeOutsUsed { get; set; }
         //rotation history
-        //substitutions
-        //time outs
     }
 }

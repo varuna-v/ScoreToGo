@@ -42,12 +42,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contants.cs" />
     <Compile Include="Extensions\GamePlayExtensions.cs" />
     <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\Mapper.cs" />
     <Compile Include="Models\AddPointResult.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GamePlay.cs" />
+    <Compile Include="Models\GameUpdateResult.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Rotation.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TeamInSetInformation.cs" />
     <Compile Include="Models\TeamRotation.cs" />
+    <Compile Include="Models\TimeOut.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

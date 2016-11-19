@@ -57,8 +57,17 @@ namespace ScoreToGo.Controllers
         [HttpPost]
         public JsonResult Substitute(GamePlayViewModel gameModel, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
         {
-            _business.Substitute(gameModel.GamePlay, team, shirtNumberGoingIn, shirtNumberComingOut);
+            _business.Substitute(gameModel.GamePlay, team, shirtNumberGoingIn, shirtNumberComingOut); //!! use returned value
             return Json(new GamePlayViewModel(gameModel.GamePlay));
+        }
+
+        [HttpPost]
+        public JsonResult LogTimeOut(GamePlayViewModel gameModel, int team)
+        {
+            GameUpdateResult updateResult = _business.LogTimeOut(gameModel.GamePlay, team); 
+            GamePlayViewModel viewModel = new GamePlayViewModel(gameModel.GamePlay);
+            viewModel.GameUpdateResult = updateResult;
+            return Json(viewModel);
         }
 
         public ActionResult GameOver()

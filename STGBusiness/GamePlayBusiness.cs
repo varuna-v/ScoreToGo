@@ -3,7 +3,7 @@ using STG.DataAccess.Interfaces;
 using STG.Domain.Models;
 using System;
 using STG.Domain.Extensions;
-using System.Collections.Generic;
+using STG.Domain;
 
 namespace STG.Business
 {
@@ -63,24 +63,24 @@ namespace STG.Business
         {
             var highestActivatedSetNumber = game.GetHighestActivatedSetNumber();
             game.Sets[highestActivatedSetNumber + 1] = new Set
-                                                            {
-                                                                TeamRotations = teamRotations,
-                                                                Score = new int[2],
-                                                                FirstServer = firstServe,
-                                                                StartedAt = DateTime.Now,
-                                                                Information = new TeamInSetInformation[2] 
+            {
+                TeamRotations = teamRotations,
+                Score = new int[2],
+                FirstServer = firstServe,
+                StartedAt = DateTime.Now,
+                Information = new TeamInSetInformation[2]
                                                                 {
-                                                                    new TeamInSetInformation() {  Substitutions = new Substitution[4] },
-                                                                    new TeamInSetInformation() { Substitutions = new Substitution[4] }
-                                                                }
-                                                            };
+                                                                    new TeamInSetInformation() {  Substitutions = new Substitution[Constants.MaximumNumberOfSubstitutionsPerTeamPerSet], TimeOuts = new TimeOut[Constants.MaximumNumberOfTimeOutsPerTeamPerSet] },
+                                                                    new TeamInSetInformation() { Substitutions = new Substitution[Constants.MaximumNumberOfSubstitutionsPerTeamPerSet], TimeOuts = new TimeOut[Constants.MaximumNumberOfTimeOutsPerTeamPerSet] }
+                                                                },
+            };
             return game;
         }
 
-        public void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
+        public GameUpdateResult Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
         {
             Set currentSet = game.GetCurrentSet();
-            int opponentTeam = team == 1 ? 0 : 1; //reapeted logic??
+            int opponentTeam = team == 1 ? 0 : 1; //repeated logic??
             //!!Validation
             // team in 0, 1
             // team contains shirt coming out
@@ -92,7 +92,7 @@ namespace STG.Business
                     break;
             }
             if (completedSubstitutionCount == 4)
-                return; //!! return error code or something
+                return GameUpdateResult.LimitExceeced;
             // new shirt number isn't already there
             int positionOfPlayerComingOut = Array.IndexOf(currentSet.TeamRotations[team].ShirtNumbers, shirtNumberComingOut);
             var substitution = new Substitution
@@ -103,8 +103,26 @@ namespace STG.Business
                 RequestedTeamScore = currentSet.Score[team]
             };
 
-            currentSet.Information[team].Substitutions[completedSubstitutionCount++] = substitution; 
+            currentSet.Information[team].Substitutions[completedSubstitutionCount++] = substitution;
             currentSet.TeamRotations[team].ShirtNumbers[positionOfPlayerComingOut] = shirtNumberGoingIn;
+            return GameUpdateResult.Success;
+        }
+
+        public GameUpdateResult LogTimeOut(GamePlay gamePlay, int team)
+        {
+            //!! more validation
+            Set currentSet = gamePlay.GetCurrentSet();
+            TeamInSetInformation teamInSetInformation = currentSet.Information[team];
+            if (teamInSetInformation.NumberOfTimeOutsUsed == Constants.MaximumNumberOfTimeOutsPerTeamPerSet)
+                return GameUpdateResult.LimitExceeced;
+            TimeOut timeOut = new TimeOut
+            {
+                TeamAScore = currentSet.Score[0],
+                TeamBScore = currentSet.Score[1]
+            };
+            teamInSetInformation.TimeOuts[teamInSetInformation.NumberOfTimeOutsUsed] = timeOut;
+            teamInSetInformation.NumberOfTimeOutsUsed++;
+            return teamInSetInformation.NumberOfTimeOutsUsed == Constants.MaximumNumberOfTimeOutsPerTeamPerSet ? GameUpdateResult.SuccessLastAvailable : GameUpdateResult.Success;
         }
 
         private int GetNewSetsFirstServer(GamePlay game, int highestActivatedSetNumber)
@@ -151,6 +169,7 @@ namespace STG.Business
         {
             _gameAccess.Save(game);
         }
+
 
     }
 }

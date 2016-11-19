@@ -45,5 +45,7 @@ namespace ScoreToGo.ViewModels
         public GamePlay GamePlay { get; set; }
 
         public TeamRotation[] RotationForView { get; set; }
+
+        public GameUpdateResult GameUpdateResult { get; set; }
     }
 }

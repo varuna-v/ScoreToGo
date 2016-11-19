@@ -10,6 +10,8 @@ namespace STG.Business.Interfaces
 
         GamePlay StartNewSet(GamePlay game, TeamRotation[] teamRotations, int firstServe);
 
-        void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut);
+        GameUpdateResult Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut);
+
+        GameUpdateResult LogTimeOut(GamePlay gamePlay, int team);
     }
 }

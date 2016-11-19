@@ -1,64 +1,71 @@
-﻿@model ScoreToGo.ViewModels.GamePlayModel
+﻿@model ScoreToGo.ViewModels.GamePlayViewModel
 @{
     ViewBag.Title = "Game";
 }
 
-<h2>Game</h2>
+@section scripts {
+    <script src="~/App/Game/App.js"></script>
+}
 
-@using (Html.BeginForm("Index", "Game"))
-{
-    <div id="gameplayRotation" class="container-fluid row portrait-hidden text-center">
-        <div class="panel panel-default col-xs-6">
-            <div class="row pad-20">
-                <span class="col-xs-6" id="0.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[4]</span>
-                <span class="col-xs-6" id="0.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[3]</span>
-            </div>
-            <div class="row pad-20">
-                <span class="col-xs-6" id="0.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[5]</span>
-                <span class="col-xs-6" id="0.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[2]</span>
-            </div>
-            <div class="row pad-20">
-                <span class="col-xs-6" id="0.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[0]</span>
-                <span class="col-xs-6" id="0.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[0].ShirtNumbers[1]</span>
-            </div>
+<div id="gamePlay" ng-controller="gameViewModel" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+    <h2>{{headingCaption}}</h2>
+    <div class="row">
+        <div class="col-xs-6 text-right">
+            <span class="text-size-10">{{ gamePlay.GamePlay.SetWins[0] }}</span>
+            <span class="text-bold text-size-16">{{ gamePlay.GamePlay.Sets[gamePlay.GamePlay.CurrentSetNumber].Score[0] }}</span>
         </div>
-
-        <div class="panel panel-default col-xs-6">
-            <div class="row pad-20">
-                <span class="col-xs-6" id="1.1">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[1]</span>
-                <span class="col-xs-6" id="1.0">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[0]</span>
-            </div>
-            <div class="row pad-20">
-                <span class="col-xs-6" id="1.2">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[2]</span>
-                <span class="col-xs-6" id="1.5">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[5]</span>
-            </div>
-            <div class="row pad-20">
-                <span class="col-xs-6" id="1.3">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[3]</span>
-                <span class="col-xs-6" id="1.4">@Model.Sets[@Model.CurrentSetNumber].TeamRotations[1].ShirtNumbers[4]</span>
-            </div>
+        <div class="col-xs-6">
+            <span class="text-bold text-size-16">{{ gamePlay.GamePlay.Sets[gamePlay.GamePlay.CurrentSetNumber].Score[1] }}</span>
+            <span class="text-size-10">{{ gamePlay.GamePlay.SetWins[1] }}</span>
         </div>
     </div>
+    <div id="gameplayRotation" class="container-fluid row portrait-hidden text-center">
 
+        <div class="panel panel-default col-xs-6">
+            <div class="row pad-20 columns-2">
+                <div class="player" ng-repeat="player in gamePlay.RotationForView[0].ShirtNumbers">
+                    <md-menu>
+                        <md-button ng-click="$mdOpenMenu($event)">
+                            {{player}}
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item><md-button ng-click="openSubstitutionPanel(0, player)">Sustitute</md-button></md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default col-xs-6">
+            <div class="row pad-20 columns-2">
+                <div class="player" ng-repeat="player in gamePlay.RotationForView[1].ShirtNumbers">
+                    <md-menu>
+                        <md-button ng-click="$mdOpenMenu($event)">
+                            {{player}}
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item><md-button ng-click="openSubstitutionPanel(1, player)">Sustitute</md-button></md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <div class="row">
         <div class="col-xs-6">
-            <button type="submit" name="PointWinner" value="0" class="btn">Team A </button>
-            Points: @Model.Sets[@Model.CurrentSetNumber].Score[0];
-            Sets: @Model.SetWins[0];
+            <button type="submit" class="btn pull-right" ng-click="addPoint(0)">Point</button>
         </div>
         <div class="col-xs-6">
-            <button type="submit" name="PointWinner" value="1" class="btn">Team B </button>
-            Points:   @Model.Sets[@Model.CurrentSetNumber].Score[1];
-            Sets: @Model.SetWins[1];
+            <button type="submit" class="btn" ng-click="addPoint(1)">Point</button>
         </div>
     </div>
-}
-@*//!!inline css*@
-<div id="substitutionPanel" style="display:none">
-    <form class="form-horizontal" method="post">
-        <input type="text" id="substitutionKey" class="hidden" name="substitutionKey" />
-        <input type="text" id="newPlayerIn" name="newPlayerIn" />
-        <button type="submit" value="Substitute" formaction="@Url.Action("Substitute")">Substitute</button>
-    </form>
+    <div ng-show="showSubstitutionPanel">
+        <label>Substitution</label>
+        <br />
+        <label for="substitutionTeam">Team:</label>  <input type="text" id="substitutionTeam" value="{{substitutionTeam}}" disabled class="form-control" />
+        <label for="positionOfPlayerComingOut">Player Coming Out: : </label> <input type="text" id="shirtNumberComingOut" value="{{shirtNumberComingOut}}" disabled class="form-control" />
+        <label for="shirtNumberGoingIn">Player Going In</label><input type="text" id="shirtNumberGoingIn" value="{{shirtNumberGoingIn}}" ng-model="shirtNumberGoingIn" class="form-control" />
+        <button type="submit" class="btn pull-right" ng-click="substitute()">Substitute</button>
+    </div>
 </div>
-
-@Html.Partial("PlayerOptionsMenu")
