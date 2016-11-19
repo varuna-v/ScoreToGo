@@ -105,6 +105,7 @@ namespace STG.Business
 
             currentSet.Information[team].Substitutions[completedSubstitutionCount++] = substitution;
             currentSet.TeamRotations[team].ShirtNumbers[positionOfPlayerComingOut] = shirtNumberGoingIn;
+            Save(game);
             return GameUpdateResult.Success;
         }
 
@@ -122,6 +123,7 @@ namespace STG.Business
             };
             teamInSetInformation.TimeOuts[teamInSetInformation.NumberOfTimeOutsUsed] = timeOut;
             teamInSetInformation.NumberOfTimeOutsUsed++;
+            Save(gamePlay);
             return teamInSetInformation.NumberOfTimeOutsUsed == Constants.MaximumNumberOfTimeOutsPerTeamPerSet ? GameUpdateResult.SuccessLastAvailable : GameUpdateResult.Success;
         }
 
