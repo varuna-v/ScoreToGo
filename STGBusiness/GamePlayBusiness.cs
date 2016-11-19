@@ -3,6 +3,7 @@ using STG.DataAccess.Interfaces;
 using STG.Domain.Models;
 using System;
 using STG.Domain.Extensions;
+using System.Collections.Generic;
 
 namespace STG.Business
 {
@@ -67,20 +68,32 @@ namespace STG.Business
                                                                 Score = new int[2],
                                                                 FirstServer = firstServe,
                                                                 StartedAt = DateTime.Now,
-                                                                Information = new TeamInSetInformation[2] { new TeamInSetInformation(), new TeamInSetInformation() }
+                                                                Information = new TeamInSetInformation[2] 
+                                                                {
+                                                                    new TeamInSetInformation() {  Substitutions = new Substitution[4] },
+                                                                    new TeamInSetInformation() { Substitutions = new Substitution[4] }
+                                                                }
                                                             };
             return game;
         }
 
         public void Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut)
         {
+            Set currentSet = game.GetCurrentSet();
+            int opponentTeam = team == 1 ? 0 : 1; //reapeted logic??
             //!!Validation
             // team in 0, 1
             // team contains shirt coming out
             // no. of substitutions done for team for set
+            int completedSubstitutionCount; //!! store this count in the object?
+            for (completedSubstitutionCount = 0; completedSubstitutionCount < currentSet.Information[team].Substitutions.Length; completedSubstitutionCount++)
+            {
+                if (currentSet.Information[team].Substitutions[completedSubstitutionCount] == null)
+                    break;
+            }
+            if (completedSubstitutionCount == 4)
+                return; //!! return error code or something
             // new shirt number isn't already there
-            Set currentSet = game.GetCurrentSet();
-            int opponentTeam = team == 1 ? 0 : 1; //reapeted logic??
             int positionOfPlayerComingOut = Array.IndexOf(currentSet.TeamRotations[team].ShirtNumbers, shirtNumberComingOut);
             var substitution = new Substitution
             {
@@ -89,7 +102,8 @@ namespace STG.Business
                 PlayerGoingIn = shirtNumberGoingIn,
                 RequestedTeamScore = currentSet.Score[team]
             };
-            currentSet.Information[team].Substitutions.Add(substitution);
+
+            currentSet.Information[team].Substitutions[completedSubstitutionCount++] = substitution; 
             currentSet.TeamRotations[team].ShirtNumbers[positionOfPlayerComingOut] = shirtNumberGoingIn;
         }
 

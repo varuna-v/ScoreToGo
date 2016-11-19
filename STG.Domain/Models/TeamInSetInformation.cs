@@ -9,7 +9,7 @@ namespace STG.Domain.Models
         //    Substitutions = new List<Substitution>();
         //}
 
-        public List<Substitution> Substitutions { get; set; }
+        public Substitution[] Substitutions { get; set; }
         //rotation history
         //substitutions
         //time outs
