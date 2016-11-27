@@ -15,14 +15,21 @@ namespace ScoreToGo
 
         private static readonly ContainerBuilder _builder = new ContainerBuilder();
 
+        private static object syncObject = new object();
+
         private static IContainer Container
         {
             get
             {
                 if (_container != null)
                     return _container;
-                _container = _builder.Build();
-                return _container;
+                lock (syncObject)
+                {
+                    if (_container != null)
+                        return _container;
+                    _container = _builder.Build();
+                    return _container;
+                }
             }
         }
 

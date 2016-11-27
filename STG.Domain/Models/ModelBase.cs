@@ -12,5 +12,3 @@ namespace STG.Domain.Models
         }
     }
 }
-
-//!! then game over is not going to the game over page
