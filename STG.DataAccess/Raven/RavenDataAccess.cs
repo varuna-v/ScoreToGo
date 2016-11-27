@@ -41,5 +41,13 @@ namespace STG.DataAccess.Raven
                 return session.Query<T>();
             }
         }
+
+        public T Load<T>(string documentId)
+        {
+            using (IDocumentSession session = RavenDocumentStoreHolder.Store.OpenSession())
+            {
+                return session.Load<T>(documentId);
+            }
+        }
     }
 }

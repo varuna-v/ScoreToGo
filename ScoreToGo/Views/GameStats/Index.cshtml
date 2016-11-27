@@ -1,0 +1,16 @@
+﻿@model ScoreToGo.ViewModels.GameStatsViewModel
+@{
+    ViewBag.Title = "Game Stats";
+}
+@section scripts {
+    <script src="~/App/GameStats/App.js"></script>
+}
+
+@section jsCode {
+    angular.bootstrap(document.getElementById("gameStats"), ['gameStats']);S
+}
+<h2>Game Stats</h2>
+
+<div id="gameStats" ng-controller="gameStatsViewModel" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+    <div ng-view></div>
+</div>

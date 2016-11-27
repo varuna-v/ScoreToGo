@@ -1,4 +1,5 @@
 ﻿using STG.Domain.Models;
+using System;
 
 namespace STG.Business.Interfaces
 {
@@ -13,5 +14,7 @@ namespace STG.Business.Interfaces
         GameUpdateResult Substitute(GamePlay game, int team, int shirtNumberGoingIn, int shirtNumberComingOut);
 
         GameUpdateResult LogTimeOut(GamePlay gamePlay, int team);
+
+        Game GetGame(Guid id);
     }
 }

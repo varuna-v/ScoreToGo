@@ -72,7 +72,9 @@
   <ItemGroup>
     <Compile Include="GamePlayBusiness.cs" />
     <Compile Include="GameBusiness.cs" />
+    <Compile Include="GameStatsBusiness.cs" />
     <Compile Include="Interfaces\IGameBusiness.cs" />
+    <Compile Include="Interfaces\IGameStatsBusiness.cs" />
     <Compile Include="Interfaces\IRotationBusiness.cs" />
     <Compile Include="Interfaces\IGamePlayBusiness.cs" />
     <Compile Include="Interfaces\ITeamBusiness.cs" />

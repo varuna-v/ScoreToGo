@@ -38,6 +38,7 @@ namespace ScoreToGo
             //Business
             _builder.RegisterType<RotationBusiness>().As<IRotationBusiness>();
             _builder.RegisterType<TeamBusiness>().As<ITeamBusiness>();
+            _builder.RegisterType<GameStatsBusiness>().As<IGameStatsBusiness>();
             _builder.RegisterType<GamePlayBusiness>().As<IGamePlayBusiness>();
             _builder.RegisterType<GameBusiness>().As<IGameBusiness>();
 
@@ -46,6 +47,7 @@ namespace ScoreToGo
             _builder.RegisterType<RotationController>();
             _builder.RegisterType<GameController>();
             _builder.RegisterType<GameSetUpController>();
+            _builder.RegisterType<GameStatsController>();
         }
 
         public static T ResolveDependency<T>()

@@ -1,0 +1,42 @@
+﻿<h3>Winner: {{gameStats.WinnerTeamName}}</h3>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th class="text-center"></th>
+                <th class="text-center"> Team A </th>
+                <th class="text-center"> Team B </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="text-center" scope="row">
+                    Substitutions
+                </th>
+                <td>{{gameStats.GameStats.TeamInGameStats[0].NumberOfSubstitutions}}</td>
+                <td>{{gameStats.GameStats.TeamInGameStats[1].NumberOfSubstitutions}}</td>
+            </tr>
+            <tr>
+                <th class="text-center" scope="row">
+                    Time Outs
+                </th>
+                <td>{{gameStats.GameStats.TeamInGameStats[0].NumberOfTimeOuts}}</td>
+                <td>{{gameStats.GameStats.TeamInGameStats[1].NumberOfTimeOuts}}</td>
+            </tr>
+            <tr>
+                <th class="text-center" scope="row">
+                    Sets Won
+                </th>
+                <td>{{gameStats.GameStats.TeamInGameStats[0].NumberOfSetsWon}}</td>
+                <td>{{gameStats.GameStats.TeamInGameStats[1].NumberOfSetsWon}}</td>
+            </tr>
+            <tr>
+                <th class="text-center" scope="row">
+                    Total Time
+                </th>
+                <td colspan="2">{{gameStats.FormattedTotalTime}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

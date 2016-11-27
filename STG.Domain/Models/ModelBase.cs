@@ -1,13 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace STG.Domain.Models
 {
     public abstract class ModelBase
     {
-        public int Id { get; set; }
+        public Guid UniqueId { get; set; }
+        public abstract string IdPrefix { get; }
+        public string Id
+        {
+            get { return $"{IdPrefix}/{UniqueId}"; }
+        }
     }
 }
+
+//!! then game over is not going to the game over page

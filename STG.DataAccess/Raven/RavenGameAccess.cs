@@ -1,24 +1,19 @@
 ﻿using STG.DataAccess.Interfaces;
 using STG.Domain.Models;
+using System;
 
 namespace STG.DataAccess.Raven
 {
     public class RavenGameAccess : RavenDataAccess, IGameAccess
     {
-        public Game GetGame(int id)
+        public Game GetGame(Guid id)
         {
-            return GetFirst<Game>(g => g.Id == id);
-        }
-
-        public GamePlay GetGamePlay(int id)
-        {
-            var game = GetGame(id);
-            return game == null ? null : game.GamePlay;
+            return Load<Game>(GetDocumentId(id));
         }
 
         public void Save(GamePlay gamePlay)
         {
-            var game = GetGame(gamePlay.GameId);
+            var game = Load<Game>(GetDocumentId(gamePlay.GameId));
             game.GamePlay = gamePlay;
             Save(game);
         }
@@ -26,6 +21,11 @@ namespace STG.DataAccess.Raven
         public void Save(Game game)
         {
             base.Save(game);
+        }
+
+        private string GetDocumentId(Guid gameId)
+        {
+            return $"{new Game().IdPrefix}/{gameId}";
         }
     }
 }

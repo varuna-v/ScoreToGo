@@ -1,6 +1,7 @@
 ﻿using ScoreToGo.ViewModels;
 using STG.Business.Interfaces;
 using STG.Domain.Models;
+using System;
 using System.Web.Mvc;
 
 namespace ScoreToGo.Controllers
@@ -64,16 +65,10 @@ namespace ScoreToGo.Controllers
         [HttpPost]
         public JsonResult LogTimeOut(GamePlayViewModel gameModel, int team)
         {
-            GameUpdateResult updateResult = _business.LogTimeOut(gameModel.GamePlay, team); 
+            GameUpdateResult updateResult = _business.LogTimeOut(gameModel.GamePlay, team);
             GamePlayViewModel viewModel = new GamePlayViewModel(gameModel.GamePlay);
             viewModel.GameUpdateResult = updateResult;
             return Json(viewModel);
         }
-
-        public ActionResult GameOver()
-        {
-            return View(new ViewModels.GameModel { GamePlay = new GamePlayViewModel(new GamePlay { SetWins = new int[] { 1, 2 } }) }); //!! hardcoded results
-        }
-
     }
 }

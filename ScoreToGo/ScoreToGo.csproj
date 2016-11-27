@@ -158,6 +158,7 @@
     <Compile Include="ControllerFactory.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GameSetUpController.cs" />
+    <Compile Include="Controllers\GameStatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RotationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -166,6 +167,7 @@
     <Compile Include="InversionOfControl.cs" />
     <Compile Include="ViewModels\GameModel.cs" />
     <Compile Include="ViewModels\GamePlayViewModel.cs" />
+    <Compile Include="ViewModels\GameStatsViewModel.cs" />
     <Compile Include="ViewModels\PlayerModel.cs" />
     <Compile Include="ViewModels\TeamModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -174,7 +176,11 @@
     <Compile Include="TestDataProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\GameStats\App.js" />
     <Content Include="App\Game\App.js" />
+    <Content Include="App\Game\Views\gameover.html" />
+    <Content Include="App\Game\Views\gameplay.html" />
+    <Content Include="App\GameStats\Views\gamestats.html" />
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layout-attributes.css" />
     <Content Include="Content\angular-material.layout-attributes.min.css" />
@@ -1045,6 +1051,7 @@
     <Content Include="Views\Shared\EditorTemplates\TeamModel.cshtml" />
     <Content Include="Views\GameSetUp\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\GameStats\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

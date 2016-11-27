@@ -4,8 +4,7 @@ namespace STG.Domain.Models
 {
     public class GamePlay
     {
-        public int GameId { get; set; }
-        public DateTime EndedAt { get; set; } //!!Move to game model
+        public Guid GameId { get; set; }
         public Set[] Sets { get; set; }
         public int[] SetWins { get; set; }
         private int _currentSetNumber = -1;

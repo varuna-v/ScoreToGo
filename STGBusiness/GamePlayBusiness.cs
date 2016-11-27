@@ -21,10 +21,13 @@ namespace STG.Business
         {
             if (bestOfNumberOfSets % 2 == 0)
                 throw new ArgumentException("Best of number of sets must be odd", "bestOfNumberOfSets");
+            Guid gameId = Guid.NewGuid();
             var game = new Game
             {
+                UniqueId = gameId,
                 GamePlay = new GamePlay
                 {
+                    GameId = gameId,
                     Sets = new Set[bestOfNumberOfSets],
                     SetWins = new int[2]
                 },
@@ -42,21 +45,22 @@ namespace STG.Business
 
             if (thisPointsServer > -1 && pointWinner != thisPointsServer)
                 game.Sets[currentSetNumber].TeamRotations[pointWinner] = Rotate(game.Sets[currentSetNumber].TeamRotations[pointWinner]);
-
+            AddPointResult result = new AddPointResult { Game = game, ResultStatus = PointResultStatus.Continue, NextServer = pointWinner };
             if (game.IsEndOfSet(currentSetNumber))
             {
-                game = FinishCurrentSet(game, currentSetNumber, pointWinner);
+                FinishCurrentSet(game, currentSetNumber, pointWinner);
                 if (game.IsEndOfGame())
                 {
-                    game = FinishGame(game);
-                    return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfGame };
+                    FinishGame(game);
+                    result = new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfGame };
                 }
-                if (game.IsNextSetDeciding())
-                    return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSetNextDeciding };
-
-                return new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSet, NextServer = GetNewSetsFirstServer(game, currentSetNumber) };
+                else if (game.IsNextSetDeciding())
+                    result = new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSetNextDeciding };
+                else
+                    result = new AddPointResult { Game = game, ResultStatus = PointResultStatus.EndOfSet, NextServer = GetNewSetsFirstServer(game, currentSetNumber) };
             }
-            return new AddPointResult { Game = game, ResultStatus = PointResultStatus.Continue, NextServer = pointWinner };
+            Save(game);
+            return result;
         }
 
         public GamePlay StartNewSet(GamePlay game, TeamRotation[] teamRotations, int firstServe)
@@ -132,18 +136,18 @@ namespace STG.Business
             return game.Sets[highestActivatedSetNumber].FirstServer == 0 ? 1 : 0;
         }
 
-        private GamePlay FinishCurrentSet(GamePlay game, int currentSetNumber, int pointWinner)
+        private void FinishCurrentSet(GamePlay game, int currentSetNumber, int pointWinner)
         {
             game.Sets[currentSetNumber].Winner = pointWinner;
             game.Sets[currentSetNumber].EndedAt = DateTime.Now;
             game.SetWins[pointWinner]++;
-            return game;
         }
 
-        private GamePlay FinishGame(GamePlay game)
+        private void FinishGame(GamePlay gamePlay)
         {
-            game.EndedAt = DateTime.Now;
-            return game;
+            Game game = GetGame(gamePlay.GameId);
+            game.EndedAt = DateTime.Now; //!! utc?
+            Save(game);
         }
 
         private TeamRotation Rotate(TeamRotation model)
@@ -162,7 +166,7 @@ namespace STG.Business
             return rotatedModel;
         }
 
-        private void Save(GamePlay gamePlay) //!! never used
+        private void Save(GamePlay gamePlay) 
         {
             _gameAccess.Save(gamePlay);
         }
@@ -172,6 +176,9 @@ namespace STG.Business
             _gameAccess.Save(game);
         }
 
-
+        public Game GetGame(Guid id)
+        {
+            return _gameAccess.GetGame(id);
+        }
     }
 }

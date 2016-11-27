@@ -1,0 +1,80 @@
+﻿<h2>Game</h2>
+<div ng-show="showSubstitutionPanel" class="mar-20">
+    <label>Substitution</label>
+    <br />
+    <span class="row">
+        <label for="substitutionTeam">Team:</label>
+        <input type="text" id="substitutionTeam" value="{{substitutionData.substitutionTeam}}" disabled class="form-control" />
+    </span>
+    <span class="row">
+        <label for="positionOfPlayerComingOut">Player Coming Out:</label>
+        <input type="text" id="shirtNumberComingOut" value="{{substitutionData.shirtNumberComingOut}}" disabled class="form-control" />
+    </span>
+    <span class="row">
+        <label for="shirtNumberGoingIn">Player Going In:</label>
+        <input type="text" id="shirtNumberGoingIn" value="{{substitutionData.shirtNumberGoingIn}}" ng-model="substitutionData.shirtNumberGoingIn" class="form-control" />
+    </span>
+    <span class="row">
+        <button type="submit" class="btn" ng-click="substitute()">Substitute</button>
+    </span>
+</div>
+<div ng-show="showTimeOutPanel">
+    <div class="text-center mar-20">
+        <h3 class="text-bold">
+            <timer countdown="31" max-time-unit="'minute'" interval="1000" autostart=false>{{minutes}}:{{sseconds}}</timer>
+        </h3>
+        <button type="submit" class="btn" ng-click="endTimeOut()">End Time Out</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6 text-right">
+        <span class="text-size-10">{{ gamePlay.GamePlay.SetWins[0] }}</span>
+        <span class="text-bold text-size-16">{{ gamePlay.GamePlay.Sets[gamePlay.GamePlay.CurrentSetNumber].Score[0] }}</span>
+    </div>
+    <div class="col-xs-6">
+        <span class="text-bold text-size-16">{{ gamePlay.GamePlay.Sets[gamePlay.GamePlay.CurrentSetNumber].Score[1] }}</span>
+        <span class="text-size-10">{{ gamePlay.GamePlay.SetWins[1] }}</span>
+    </div>
+</div>
+<div id="gameplayRotation" class="container-fluid row text-center">
+    <div class="panel panel-default col-xs-6">
+        <div class="row pad-20 columns-2">
+            <div class="player" ng-repeat="player in gamePlay.RotationForView[0].ShirtNumbers">
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu($event)">
+                        {{player}}
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item><md-button ng-click="openSubstitutionPanel(0, player)">Sustitute</md-button></md-menu-item> <!--@*//!!gray out when exceeded total*@-->
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default col-xs-6">
+        <div class="row pad-20 columns-2">
+            <div class="player" ng-repeat="player in gamePlay.RotationForView[1].ShirtNumbers">
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu($event)">
+                        {{player}}
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item><md-button ng-click="openSubstitutionPanel(1, player)">Sustitute</md-button></md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <button type="submit" class="btn" ng-disabled="!timeOutData.teamAHasAvailableTimeOuts" ng-click="startTimeOut(0)">Time Out</button><!--@*//!!gray out when exceeded total*@-->
+        <button type="submit" class="btn pull-right" ng-disabled="!teamsData.teamACanScore" ng-click="addPoint(0)">Point</button>
+    </div>
+    <div class="col-xs-6">
+        <button type="submit" class="btn" ng-disabled="!teamsData.teamBCanScore" ng-click="addPoint(1)">Point</button>
+        <button type="submit" class="btn pull-right" ng-disabled="!timeOutData.teamBHasAvailableTimeOuts" ng-click="startTimeOut(1)">Time Out</button>
+    </div>
+</div>

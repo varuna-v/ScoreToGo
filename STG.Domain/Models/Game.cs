@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace STG.Domain.Models
 {
@@ -11,5 +7,14 @@ namespace STG.Domain.Models
         public Team[] Teams { get; set; }
         public GamePlay GamePlay { get; set; }
         public DateTime StartedAt { get; set; }
+        public DateTime EndedAt { get; set; }
+
+        public override string IdPrefix
+        {
+            get
+            {
+                return "game";
+            }
+        }
     }
 }

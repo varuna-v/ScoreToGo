@@ -9,5 +9,13 @@ namespace STG.Domain.Models
         public string Code { get; set; }
         public string GameLetter { get; set; }
         public List<Player> Players { get; set; }
+
+        public override string IdPrefix
+        {
+            get
+            {
+                return "team";
+            }
+        }
     }
 }
